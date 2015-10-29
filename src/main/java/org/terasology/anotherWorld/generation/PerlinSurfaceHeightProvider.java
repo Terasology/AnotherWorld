@@ -16,10 +16,11 @@
 package org.terasology.anotherWorld.generation;
 
 import com.google.common.base.Function;
+
 import org.terasology.anotherWorld.TerrainDeformation;
 import org.terasology.anotherWorld.util.alpha.IdentityAlphaFunction;
 import org.terasology.math.TeraMath;
-import org.terasology.math.Vector2i;
+import org.terasology.math.geom.Vector2i;
 import org.terasology.utilities.procedural.BrownianNoise2D;
 import org.terasology.utilities.procedural.Noise2D;
 import org.terasology.utilities.procedural.SimplexNoise;

@@ -17,7 +17,7 @@ package org.terasology.anotherWorld.generation;
 
 import org.terasology.anotherWorld.AnotherWorldBiome;
 import org.terasology.math.TeraMath;
-import org.terasology.math.Vector2i;
+import org.terasology.math.geom.Vector2i;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.world.biomes.BiomeRegistry;
 import org.terasology.world.generation.Facet;

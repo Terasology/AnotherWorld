@@ -15,7 +15,7 @@
  */
 package org.terasology.anotherWorld;
 
-import org.terasology.math.Vector2i;
+import org.terasology.math.geom.Vector2i;
 
 import java.util.HashMap;
 import java.util.Map;
