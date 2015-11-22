@@ -17,6 +17,7 @@ package org.terasology.anotherWorld.generation;
 
 import org.terasology.anotherWorld.AnotherWorldBiome;
 import org.terasology.math.TeraMath;
+import org.terasology.math.geom.BaseVector2i;
 import org.terasology.math.geom.Vector2i;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.world.biomes.BiomeRegistry;
@@ -50,10 +51,10 @@ public class BiomeProvider implements FacetProvider {
 
         BiomeRegistry biomeRegistry = CoreRegistry.get(BiomeRegistry.class);
 
-        for (Vector2i pos : facet.getWorldRegion()) {
+        for (BaseVector2i pos : facet.getWorldRegion().contents()) {
             int surfaceHeight = TeraMath.floorToInt(surfaceHeightFacet.getWorld(pos));
-            float temp = temperatureFacet.get(pos.x, surfaceHeight, pos.y);
-            float hum = surfaceHumidityFacet.get(pos.x, surfaceHeight, pos.y);
+            float temp = temperatureFacet.get(pos.x(), surfaceHeight, pos.y());
+            float hum = surfaceHumidityFacet.get(pos.x(), surfaceHeight, pos.y());
             float hillyness = hillynessFacet.getWorld(pos);
 
             AnotherWorldBiome bestBiome = getBestBiomeMatch(biomeRegistry, temp, hum, hillyness, surfaceHeight);

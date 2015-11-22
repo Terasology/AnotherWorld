@@ -15,12 +15,13 @@
  */
 package org.terasology.anotherWorld.generation;
 
-import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 
 import org.terasology.anotherWorld.AnotherWorldBiome;
 import org.terasology.anotherWorld.decorator.layering.LayerDefinition;
 import org.terasology.anotherWorld.decorator.layering.LayeringConfig;
-import org.terasology.math.geom.Vector2i;
+import org.terasology.math.geom.BaseVector2i;
 import org.terasology.world.biomes.Biome;
 import org.terasology.world.generation.Border3D;
 import org.terasology.world.generation.Facet;
@@ -29,8 +30,7 @@ import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Produces;
 import org.terasology.world.generation.Requires;
 
-import java.util.List;
-import java.util.Map;
+import com.google.common.collect.Maps;
 
 @Produces(BlockLayersFacet.class)
 @Requires(value = {@Facet(BiomeFacet.class)})
@@ -60,7 +60,7 @@ public class BlockLayersProvider implements FacetProvider {
         BlockLayersFacet result = new BlockLayersFacet(region.getRegion(), border, (Class<List<LayerDefinition>>) (Class<?>) List.class);
         BiomeFacet biomeFacet = region.getRegionFacet(BiomeFacet.class);
 
-        for (Vector2i pos : result.getRelativeRegion()) {
+        for (BaseVector2i pos : result.getRelativeRegion().contents()) {
             AnotherWorldBiome biome = biomeFacet.get(pos);
             result.set(pos, biomeLayerDefinitions.get(biome.getId()));
         }
