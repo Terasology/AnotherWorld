@@ -25,7 +25,6 @@ import org.terasology.world.block.Block;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
-import org.terasology.world.liquid.LiquidData;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -62,7 +61,6 @@ public class DefaultLayersDefinition implements LayersDefinition {
             for (int level = seaBottom; level <= seaTop; level++) {
 //                if (chunkRegion.encompasses(x, level, z)) {
                 chunk.setBlock(ChunkMath.calcBlockPos(x, level, z), layeringConfig.getSeaBlock());
-                chunk.setLiquid(ChunkMath.calcBlockPos(x, level, z), new LiquidData(layeringConfig.getSeaLiquid(), LiquidData.MAX_LIQUID_DEPTH));
 //                }
             }
         }

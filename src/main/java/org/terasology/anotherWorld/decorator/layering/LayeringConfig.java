@@ -16,19 +16,16 @@
 package org.terasology.anotherWorld.decorator.layering;
 
 import org.terasology.world.block.Block;
-import org.terasology.world.liquid.LiquidType;
 
 public class LayeringConfig {
     private Block bottomBlock;
     private Block mainBlock;
     private Block seaBlock;
-    private LiquidType seaLiquid;
 
-    public LayeringConfig(Block bottomBlock, Block mainBlock, Block seaBlock, LiquidType seaLiquid) {
+    public LayeringConfig(Block bottomBlock, Block mainBlock, Block seaBlock) {
         this.bottomBlock = bottomBlock;
         this.mainBlock = mainBlock;
         this.seaBlock = seaBlock;
-        this.seaLiquid = seaLiquid;
     }
 
     public Block getBottomBlock() {
@@ -41,9 +38,5 @@ public class LayeringConfig {
 
     public Block getSeaBlock() {
         return seaBlock;
-    }
-
-    public LiquidType getSeaLiquid() {
-        return seaLiquid;
     }
 }
