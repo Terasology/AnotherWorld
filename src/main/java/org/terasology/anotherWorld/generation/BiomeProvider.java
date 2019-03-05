@@ -16,11 +16,11 @@
 package org.terasology.anotherWorld.generation;
 
 import org.terasology.anotherWorld.AnotherWorldBiome;
+import org.terasology.biomesAPI.BiomeRegistry;
 import org.terasology.math.TeraMath;
 import org.terasology.math.geom.BaseVector2i;
 import org.terasology.math.geom.Vector2i;
 import org.terasology.registry.CoreRegistry;
-import org.terasology.world.biomes.BiomeRegistry;
 import org.terasology.world.generation.Facet;
 import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
@@ -69,7 +69,7 @@ public class BiomeProvider implements FacetProvider {
         AnotherWorldBiome chosenBiome = null;
         float maxPriority = 0;
 
-        for (AnotherWorldBiome biome : biomeRegistry.getBiomes(AnotherWorldBiome.class)) {
+        for (AnotherWorldBiome biome : biomeRegistry.getRegisteredBiomes(AnotherWorldBiome.class)) {
             final AnotherWorldBiome.SweetSpot sweetSpot = biome.getSweetSpot();
             float matchPriority = 0;
 

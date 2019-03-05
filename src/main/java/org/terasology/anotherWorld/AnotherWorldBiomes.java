@@ -15,16 +15,20 @@
  */
 package org.terasology.anotherWorld;
 
-import org.terasology.world.biomes.BiomeRegistrator;
-import org.terasology.world.biomes.BiomeRegistry;
+import org.terasology.biomesAPI.BiomeRegistry;
+import org.terasology.entitySystem.systems.BaseComponentSystem;
+import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.registry.In;
 
-public class AnotherWorldBiomes implements BiomeRegistrator {
+@RegisterSystem
+public class AnotherWorldBiomes extends BaseComponentSystem {
+    @In
+    private BiomeRegistry registry;
 
     public static final AnotherWorldBiome DESERT = new AnotherWorldBiomeImpl(
             "AnotherWorld:Desert",
             "Desert",
             0.4f,
-            0.1f,
             // Hot and dry, and preferably flat
             new DefaultSweetSpot(0f, 0.4f, 1f, 0.4f, 0f, 0.2f, 0f, 0f)
     );
@@ -33,7 +37,6 @@ public class AnotherWorldBiomes implements BiomeRegistrator {
             "AnotherWorld:Forest",
             "Forest",
             1f,
-            0.6f,
             // Reasonably humid, and average temperature
             new DefaultSweetSpot(0.7f, 0.5f, 0.5f, 0.5f, 0f, 0f, 0f, 0f)
     );
@@ -42,7 +45,6 @@ public class AnotherWorldBiomes implements BiomeRegistrator {
             "AnotherWorld:Plains",
             "Plains",
             1f,
-            0.3f,
             // Rather dry and average temperature, flat preferred
             new DefaultSweetSpot(0.3f, 0.3f, 0.5f, 0.3f, 0f, 0.4f, 0f, 0f)
     );
@@ -51,7 +53,6 @@ public class AnotherWorldBiomes implements BiomeRegistrator {
             "AnotherWorld:Tundra",
             "Tundra",
             0.8f,
-            0.1f,
             // Cold and dry
             new DefaultSweetSpot(0f, 0.2f, 0f, 0.2f, 0f, 0f, 0.6f, 0.6f)
     );
@@ -60,7 +61,6 @@ public class AnotherWorldBiomes implements BiomeRegistrator {
             "AnotherWorld:Taiga",
             "Taiga",
             0.8f,
-            0.1f,
             // Cold, but reasonably humid, usually on high levels
             new DefaultSweetSpot(0.5f, 0.2f, 0f, 0.2f, 0f, 0f, 0.6f, 0.6f)
     );
@@ -69,7 +69,6 @@ public class AnotherWorldBiomes implements BiomeRegistrator {
             "AnotherWorld:Alpine",
             "Alpine",
             0.9f,
-            0,
             // Occurs in very high Y-level, and cold
             new DefaultSweetSpot(0f, 0f, 0f, 0f, 0f, 0f, 1f, 1f)
     );
@@ -78,13 +77,12 @@ public class AnotherWorldBiomes implements BiomeRegistrator {
             "AnotherWorld:Cliff",
             "Cliff",
             0.8f,
-            0.1f,
             // Cold, but reasonably humid, usually on high levels
             new DefaultSweetSpot(0f, 0f, 0f, 0f, 1f, 1f, 0f, 0f)
     );
 
     @Override
-    public void registerBiomes(BiomeRegistry registry) {
+    public void preBegin() {
         registry.registerBiome(DESERT);
         registry.registerBiome(FOREST);
         registry.registerBiome(PLAINS);
