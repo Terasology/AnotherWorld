@@ -26,15 +26,13 @@ class AnotherWorldBiomeImpl implements AnotherWorldBiome {
 
     private final float rarity;
 
-    private final float fog;
 
     private final SweetSpot sweetSpot;
 
-    AnotherWorldBiomeImpl(String id, String name, float rarity, float fog, SweetSpot sweetSpot) {
+    AnotherWorldBiomeImpl(String id, String name, float rarity, SweetSpot sweetSpot) {
         this.id = id;
         this.name = name;
         this.rarity = rarity;
-        this.fog = fog;
         this.sweetSpot = sweetSpot;
     }
 
@@ -62,20 +60,4 @@ class AnotherWorldBiomeImpl implements AnotherWorldBiome {
     public SweetSpot getSweetSpot() {
         return sweetSpot;
     }
-
-    @Override
-    public float getFog() {
-        return fog;
-    }
-
-    @Override
-    public float getHumidity() {
-        return sweetSpot.getHumidity();
-    }
-
-    @Override
-    public float getTemperature() {
-        return sweetSpot.getTemperature();
-    }
-
 }

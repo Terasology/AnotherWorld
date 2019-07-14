@@ -15,7 +15,7 @@
  */
 package org.terasology.anotherWorld;
 
-import org.terasology.world.biomes.Biome;
+import org.terasology.biomesAPI.Biome;
 
 /**
  * Biomes used by the Another World generation framework need additional properties that are defined

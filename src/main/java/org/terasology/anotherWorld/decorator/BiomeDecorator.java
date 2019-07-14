@@ -18,6 +18,8 @@ package org.terasology.anotherWorld.decorator;
 import org.terasology.anotherWorld.AnotherWorldBiome;
 import org.terasology.anotherWorld.ChunkDecorator;
 import org.terasology.anotherWorld.generation.BiomeFacet;
+import org.terasology.biomesAPI.BiomeRegistry;
+import org.terasology.registry.CoreRegistry;
 import org.terasology.world.chunks.ChunkConstants;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
@@ -27,8 +29,11 @@ import org.terasology.world.generation.Region;
  */
 public class BiomeDecorator implements ChunkDecorator {
 
+    private BiomeRegistry biomeRegistry;
+
     @Override
     public void initialize() {
+        biomeRegistry = CoreRegistry.get(BiomeRegistry.class);
     }
 
     @Override
@@ -45,7 +50,7 @@ public class BiomeDecorator implements ChunkDecorator {
                 // Biome is the same for each value of y and depends only on x and z
                 AnotherWorldBiome biome = biomeFacet.get(x, z);
                 for (int y = 0; y < ChunkConstants.CHUNK_SIZE.y; y++) {
-                    chunk.setBiome(x, y, z, biome);
+                    biomeRegistry.setBiome(biome, chunk, x, y, z);
                 }
             }
         }

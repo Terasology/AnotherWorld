@@ -18,9 +18,9 @@ package org.terasology.anotherWorld.decorator.layering;
 import org.terasology.anotherWorld.AnotherWorldBiome;
 import org.terasology.anotherWorld.ChunkDecorator;
 import org.terasology.anotherWorld.generation.BiomeFacet;
+import org.terasology.biomesAPI.BiomeRegistry;
 import org.terasology.math.Region3i;
 import org.terasology.registry.CoreRegistry;
-import org.terasology.world.biomes.BiomeRegistry;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
 import org.terasology.world.generator.plugin.WorldGeneratorPluginLibrary;
@@ -70,13 +70,14 @@ public class LayeringDecorator implements ChunkDecorator {
         if (layersDefinition != null) {
             return layersDefinition;
         }
-        String biomeParentId = biome.getBiomeParent();
-        if (biomeParentId != null) {
-            AnotherWorldBiome parentBiome = biomeRegistry.getBiomeById(biomeParentId, AnotherWorldBiome.class);
-            if (parentBiome != null) {
-                return findMatchingLayers(biomeRegistry, parentBiome);
-            }
-        }
+        // commented out- biomes module doesn't support biome lookup by string id yet
+//        String biomeParentId = biome.getBiomeParent();
+//        if (biomeParentId != null) {
+//            AnotherWorldBiome parentBiome = biomeRegistry.getBiomeById(biomeParentId, AnotherWorldBiome.class);
+//            if (parentBiome != null) {
+//                return findMatchingLayers(biomeRegistry, parentBiome);
+//            }
+//        }
         return null;
     }
 
