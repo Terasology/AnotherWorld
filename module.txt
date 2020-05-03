@@ -6,7 +6,8 @@
     "description" : "Pluggable world generator. Structure (Ore) generation and various util classes are very heavily based on JRoush's implementation of CustomOreGen.",
     "dependencies" : [
         { "id" : "ClimateConditions", "minVersion" : "0.1.0"},
-        { "id" : "BiomesAPI", "minVersion" : "3.2.1"}
+        { "id" : "BiomesAPI", "minVersion" : "3.2.1"},
+        { "id" : "CoreWorlds", "minVersion" : "1.0.0"}
     ],
     "isServerSideOnly" : false,
     "isWorld": true
