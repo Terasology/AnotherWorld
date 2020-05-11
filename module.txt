@@ -1,14 +1,14 @@
 {
-    "id" : "AnotherWorld",
-    "version" : "0.3.0",
-    "author" : "Marcin Sciesinski <marcins78@gmail.com>",
-    "displayName" : "AnotherWorld",
-    "description" : "Pluggable world generator. Structure (Ore) generation and various util classes are very heavily based on JRoush's implementation of CustomOreGen.",
-    "dependencies" : [
-        { "id" : "ClimateConditions", "minVersion" : "0.1.0"},
-        { "id" : "BiomesAPI", "minVersion" : "3.2.1"},
-        { "id" : "CoreWorlds", "minVersion" : "1.0.0"}
+    "id": "AnotherWorld",
+    "version": "1.0.0",
+    "author": "Marcin Sciesinski <marcins78@gmail.com>",
+    "displayName": "AnotherWorld",
+    "description": "Pluggable world generator. Structure (Ore) generation and various util classes are very heavily based on JRoush's implementation of CustomOreGen.",
+    "dependencies": [
+        { "id": "ClimateConditions", "minVersion": "0.1.0"},
+        { "id": "BiomesAPI", "minVersion": "3.2.1"},
+        { "id": "CoreWorlds", "minVersion": "1.0.0"}
     ],
-    "isServerSideOnly" : false,
+    "isServerSideOnly": false,
     "isWorld": true
 }
