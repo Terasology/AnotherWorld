@@ -20,6 +20,7 @@ import org.terasology.anotherWorld.ChunkDecorator;
 import org.terasology.anotherWorld.generation.BiomeFacet;
 import org.terasology.biomesAPI.BiomeRegistry;
 import org.terasology.math.Region3i;
+import org.terasology.naming.Name;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
@@ -30,7 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 public class LayeringDecorator implements ChunkDecorator {
-    private Map<String, LayersDefinition> biomeLayers = new HashMap<>();
+    private Map<Name, LayersDefinition> biomeLayers = new HashMap<>();
     private LayeringConfig layeringConfig;
     private long seed;
 

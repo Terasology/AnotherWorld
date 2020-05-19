@@ -20,6 +20,7 @@ import org.terasology.anotherWorld.util.PDist;
 import org.terasology.math.ChunkMath;
 import org.terasology.math.Region3i;
 import org.terasology.math.TeraMath;
+import org.terasology.naming.Name;
 import org.terasology.utilities.random.Random;
 import org.terasology.world.block.Block;
 import org.terasology.world.chunks.CoreChunk;
@@ -32,15 +33,15 @@ import java.util.List;
 public class DefaultLayersDefinition implements LayersDefinition {
     private List<LayerDefinition> layerDefinitions = new LinkedList<>();
     private int seaLevel;
-    private String biomeId;
+    private Name biomeId;
 
-    public DefaultLayersDefinition(int seaLevel, String biomeId) {
+    public DefaultLayersDefinition(int seaLevel, Name biomeId) {
         this.seaLevel = seaLevel;
         this.biomeId = biomeId;
     }
 
     @Override
-    public String getBiomeId() {
+    public Name getBiomeId() {
         return biomeId;
     }
 

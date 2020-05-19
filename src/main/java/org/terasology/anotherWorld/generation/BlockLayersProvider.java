@@ -23,6 +23,7 @@ import org.terasology.anotherWorld.decorator.layering.LayerDefinition;
 import org.terasology.anotherWorld.decorator.layering.LayeringConfig;
 import org.terasology.biomesAPI.Biome;
 import org.terasology.math.geom.BaseVector2i;
+import org.terasology.naming.Name;
 import org.terasology.world.generation.Border3D;
 import org.terasology.world.generation.Facet;
 import org.terasology.world.generation.FacetProvider;
@@ -38,7 +39,7 @@ public class BlockLayersProvider implements FacetProvider {
     private LayeringConfig layeringConfig;
     private long seed;
 
-    private Map<String, List<LayerDefinition>> biomeLayerDefinitions = Maps.newHashMap();
+    private Map<Name, List<LayerDefinition>> biomeLayerDefinitions = Maps.newHashMap();
 
     public BlockLayersProvider(LayeringConfig layeringConfig) {
         this.layeringConfig = layeringConfig;

@@ -15,12 +15,14 @@
  */
 package org.terasology.anotherWorld;
 
+import org.terasology.naming.Name;
+
 /**
  * Standard implementation class for basic another world biomes.
  */
 class AnotherWorldBiomeImpl implements AnotherWorldBiome {
 
-    private final String id;
+    private final Name id;
 
     private final String name;
 
@@ -30,19 +32,19 @@ class AnotherWorldBiomeImpl implements AnotherWorldBiome {
     private final SweetSpot sweetSpot;
 
     AnotherWorldBiomeImpl(String id, String name, float rarity, SweetSpot sweetSpot) {
-        this.id = id;
+        this.id = new Name(id);
         this.name = name;
         this.rarity = rarity;
         this.sweetSpot = sweetSpot;
     }
 
     @Override
-    public String getId() {
+    public Name getId() {
         return id;
     }
 
     @Override
-    public String getName() {
+    public String getDisplayName() {
         return name;
     }
 

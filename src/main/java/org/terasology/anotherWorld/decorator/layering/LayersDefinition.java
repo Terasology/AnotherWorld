@@ -15,12 +15,13 @@
  */
 package org.terasology.anotherWorld.decorator.layering;
 
+import org.terasology.naming.Name;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
 import org.terasology.world.generator.plugin.WorldGeneratorPlugin;
 
 public interface LayersDefinition extends WorldGeneratorPlugin {
-    String getBiomeId();
+    Name getBiomeId();
 
     void generateInChunk(long seed, CoreChunk chunk, Region chunkRegion, int x, int y, LayeringConfig layeringConfig);
 }
