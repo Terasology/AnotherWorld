@@ -61,7 +61,7 @@ public class DefaultLayersDefinition implements LayersDefinition {
             int seaTop = Math.min(seaLevel, chunkRegion.maxY());
             for (int level = seaBottom; level <= seaTop; level++) {
 //                if (chunkRegion.encompasses(x, level, z)) {
-                chunk.setBlock(ChunkMath.calcBlockPos(x, level, z), layeringConfig.getSeaBlock());
+                chunk.setBlock(ChunkMath.calcRelativeBlockPos(x, level, z), layeringConfig.getSeaBlock());
 //                }
             }
         }
@@ -73,7 +73,7 @@ public class DefaultLayersDefinition implements LayersDefinition {
                 for (int i = 0; i < layerHeight; i++) {
                     if (level - i > 0) {
                         if (chunkRegion.encompasses(x, level - i, z)) {
-                            chunk.setBlock(ChunkMath.calcBlockPos(x, level - i, z), layerDefinition.block);
+                            chunk.setBlock(ChunkMath.calcRelativeBlockPos(x, level - i, z), layerDefinition.block);
                         }
                     }
                 }
@@ -87,13 +87,13 @@ public class DefaultLayersDefinition implements LayersDefinition {
         for (int i = level; i > 0; i--) {
             if (chunkRegion.encompasses(x, i, z)) {
 
-                chunk.setBlock(ChunkMath.calcBlockPos(x, i, z), layeringConfig.getMainBlock());
+                chunk.setBlock(ChunkMath.calcRelativeBlockPos(x, i, z), layeringConfig.getMainBlock());
             }
         }
 
 
         if (chunkRegion.encompasses(x, 0, z)) {
-            chunk.setBlock(ChunkMath.calcBlockPos(x, 0, z), layeringConfig.getBottomBlock());
+            chunk.setBlock(ChunkMath.calcRelativeBlockPos(x, 0, z), layeringConfig.getBottomBlock());
         }
     }
 
