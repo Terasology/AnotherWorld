@@ -17,10 +17,10 @@ package org.terasology.anotherWorld.decorator.layering;
 
 import org.terasology.anotherWorld.util.ChunkRandom;
 import org.terasology.anotherWorld.util.PDist;
+import org.terasology.gestalt.naming.Name;
 import org.terasology.math.ChunkMath;
 import org.terasology.math.Region3i;
 import org.terasology.math.TeraMath;
-import org.terasology.naming.Name;
 import org.terasology.utilities.random.Random;
 import org.terasology.world.block.Block;
 import org.terasology.world.chunks.CoreChunk;
