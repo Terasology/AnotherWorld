@@ -1,18 +1,5 @@
-/*
- * Copyright 2014 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.anotherWorld;
 
 import com.google.common.base.Function;
@@ -25,32 +12,30 @@ import org.terasology.anotherWorld.generation.TerrainVariationProvider;
 import org.terasology.anotherWorld.util.alpha.IdentityAlphaFunction;
 import org.terasology.climateConditions.ClimateConditionsSystem;
 import org.terasology.climateConditions.ConditionsBaseField;
-import org.terasology.core.world.generator.facetProviders.SeaLevelProvider;
-import org.terasology.core.world.generator.facetProviders.SurfaceToDensityProvider;
-import org.terasology.engine.SimpleUri;
-import org.terasology.registry.CoreRegistry;
-import org.terasology.world.chunks.CoreChunk;
-import org.terasology.world.generation.EntityBuffer;
-import org.terasology.world.generation.FacetProvider;
-import org.terasology.world.generation.World;
-import org.terasology.world.generation.WorldBuilder;
-import org.terasology.world.generator.WorldGenerator;
-import org.terasology.world.generator.plugin.WorldGeneratorPluginLibrary;
+import org.terasology.coreworlds.generator.facetProviders.SeaLevelProvider;
+import org.terasology.coreworlds.generator.facetProviders.SurfaceToDensityProvider;
+import org.terasology.engine.core.SimpleUri;
+import org.terasology.engine.registry.CoreRegistry;
+import org.terasology.engine.world.chunks.CoreChunk;
+import org.terasology.engine.world.generation.EntityBuffer;
+import org.terasology.engine.world.generation.FacetProvider;
+import org.terasology.engine.world.generation.World;
+import org.terasology.engine.world.generation.WorldBuilder;
+import org.terasology.engine.world.generator.WorldGenerator;
+import org.terasology.engine.world.generator.plugin.WorldGeneratorPluginLibrary;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract class PluggableWorldGenerator implements WorldGenerator {
+    private final List<ChunkDecorator> chunkDecorators = new LinkedList<>();
+    private final List<FeatureGenerator> featureGenerators = new LinkedList<>();
+    private final List<FacetProvider> facetProviders = new LinkedList<>();
+    private final SimpleUri uri;
     private World world;
-    private List<ChunkDecorator> chunkDecorators = new LinkedList<>();
-    private List<FeatureGenerator> featureGenerators = new LinkedList<>();
-    private List<FacetProvider> facetProviders = new LinkedList<>();
-
     private int seaLevel = 32;
     private int maxLevel = 220;
     private float biomeDiversity = 0.5f;
-
-    private SimpleUri uri;
     private String worldSeed;
 
     private Function<Float, Float> temperatureFunction = IdentityAlphaFunction.singleton();
@@ -99,7 +84,8 @@ public abstract class PluggableWorldGenerator implements WorldGenerator {
         this.humidityFunction = humidityFunction;
     }
 
-    public void setLandscapeOptions(float seaFrequency, float terrainDiversity, Function<Float, Float> generalTerrainFunction,
+    public void setLandscapeOptions(float seaFrequency, float terrainDiversity,
+                                    Function<Float, Float> generalTerrainFunction,
                                     Function<Float, Float> heightBelowSeaLevelFunction,
                                     Function<Float, Float> heightAboveSeaLevelFunction,
                                     float hillinessDiversity, Function<Float, Float> hillynessFunction) {
@@ -147,13 +133,13 @@ public abstract class PluggableWorldGenerator implements WorldGenerator {
     }
 
     @Override
-    public void setWorldSeed(String seedString) {
-        worldSeed = seedString;
+    public String getWorldSeed() {
+        return worldSeed;
     }
 
     @Override
-    public String getWorldSeed() {
-        return worldSeed;
+    public void setWorldSeed(String seedString) {
+        worldSeed = seedString;
     }
 
     public long getSeed() {

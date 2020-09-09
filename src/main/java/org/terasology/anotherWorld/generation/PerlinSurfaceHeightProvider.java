@@ -1,52 +1,36 @@
-/*
- * Copyright 2014 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.anotherWorld.generation;
 
+import com.google.common.base.Function;
 import org.terasology.anotherWorld.TerrainDeformation;
 import org.terasology.anotherWorld.util.alpha.IdentityAlphaFunction;
+import org.terasology.engine.utilities.procedural.BrownianNoise2D;
+import org.terasology.engine.utilities.procedural.Noise2D;
+import org.terasology.engine.utilities.procedural.SimplexNoise;
+import org.terasology.engine.world.generation.Border3D;
+import org.terasology.engine.world.generation.FacetProvider;
+import org.terasology.engine.world.generation.GeneratingRegion;
+import org.terasology.engine.world.generation.Produces;
+import org.terasology.engine.world.generation.facets.SurfaceHeightFacet;
 import org.terasology.math.TeraMath;
 import org.terasology.math.geom.BaseVector2i;
-import org.terasology.utilities.procedural.BrownianNoise2D;
-import org.terasology.utilities.procedural.Noise2D;
-import org.terasology.utilities.procedural.SimplexNoise;
-import org.terasology.world.generation.Border3D;
-import org.terasology.world.generation.FacetProvider;
-import org.terasology.world.generation.GeneratingRegion;
-import org.terasology.world.generation.Produces;
-import org.terasology.world.generation.facets.SurfaceHeightFacet;
-
-import com.google.common.base.Function;
 
 @Produces(SurfaceHeightFacet.class)
 public class PerlinSurfaceHeightProvider implements FacetProvider {
     private static final float MIN_MULTIPLIER = 0.00005f;
     private static final float MAX_MULTIPLIER = 0.001f;
-
+    private final float seaFrequency;
+    private final int seaLevel;
+    private final int maxLevel;
+    private final float terrainNoiseMultiplier;
+    private final Function<Float, Float> generalHeightFunction;
+    private final Function<Float, Float> heightBelowSeaLevelFunction;
+    private final Function<Float, Float> heightAboveSeaLevelFunction;
+    private final float hillynessDiversity;
+    private final Function<Float, Float> hillynessFunction;
     private Noise2D noise;
     private double noiseScale;
-
-    private float seaFrequency;
-    private int seaLevel;
-    private int maxLevel;
-    private float terrainNoiseMultiplier;
-    private Function<Float, Float> generalHeightFunction;
-    private Function<Float, Float> heightBelowSeaLevelFunction;
-    private Function<Float, Float> heightAboveSeaLevelFunction;
-    private float hillynessDiversity;
-    private Function<Float, Float> hillynessFunction;
     private TerrainDeformation terrainDeformation;
 
     /**
@@ -60,7 +44,8 @@ public class PerlinSurfaceHeightProvider implements FacetProvider {
                 heightAboveSeaLevelFunction, hillynessDiversity, hillynessFunction, seaLevel, maxLevel);
     }
 
-    public PerlinSurfaceHeightProvider(float seaFrequency, float terrainDiversity, Function<Float, Float> generalTerrainFunction,
+    public PerlinSurfaceHeightProvider(float seaFrequency, float terrainDiversity,
+                                       Function<Float, Float> generalTerrainFunction,
                                        Function<Float, Float> heightBelowSeaLevelFunction,
                                        Function<Float, Float> heightAboveSeaLevelFunction,
                                        float hillinessDiversity, Function<Float, Float> hillynessFunction,

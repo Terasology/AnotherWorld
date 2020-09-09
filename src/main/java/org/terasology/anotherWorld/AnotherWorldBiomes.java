@@ -1,30 +1,14 @@
-/*
- * Copyright 2014 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.anotherWorld;
 
 import org.terasology.biomesAPI.BiomeRegistry;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.registry.In;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.registry.In;
 
 @RegisterSystem
 public class AnotherWorldBiomes extends BaseComponentSystem {
-    @In
-    private BiomeRegistry registry;
-
     public static final AnotherWorldBiome DESERT = new AnotherWorldBiomeImpl(
             "AnotherWorld:Desert",
             "Desert",
@@ -32,7 +16,6 @@ public class AnotherWorldBiomes extends BaseComponentSystem {
             // Hot and dry, and preferably flat
             new DefaultSweetSpot(0f, 0.4f, 1f, 0.4f, 0f, 0.2f, 0f, 0f)
     );
-
     public static final AnotherWorldBiome FOREST = new AnotherWorldBiomeImpl(
             "AnotherWorld:Forest",
             "Forest",
@@ -40,7 +23,6 @@ public class AnotherWorldBiomes extends BaseComponentSystem {
             // Reasonably humid, and average temperature
             new DefaultSweetSpot(0.7f, 0.5f, 0.5f, 0.5f, 0f, 0f, 0f, 0f)
     );
-
     public static final AnotherWorldBiome PLAINS = new AnotherWorldBiomeImpl(
             "AnotherWorld:Plains",
             "Plains",
@@ -48,7 +30,6 @@ public class AnotherWorldBiomes extends BaseComponentSystem {
             // Rather dry and average temperature, flat preferred
             new DefaultSweetSpot(0.3f, 0.3f, 0.5f, 0.3f, 0f, 0.4f, 0f, 0f)
     );
-
     public static final AnotherWorldBiome TUNDRA = new AnotherWorldBiomeImpl(
             "AnotherWorld:Tundra",
             "Tundra",
@@ -56,7 +37,6 @@ public class AnotherWorldBiomes extends BaseComponentSystem {
             // Cold and dry
             new DefaultSweetSpot(0f, 0.2f, 0f, 0.2f, 0f, 0f, 0.6f, 0.6f)
     );
-
     public static final AnotherWorldBiome TAIGA = new AnotherWorldBiomeImpl(
             "AnotherWorld:Taiga",
             "Taiga",
@@ -64,7 +44,6 @@ public class AnotherWorldBiomes extends BaseComponentSystem {
             // Cold, but reasonably humid, usually on high levels
             new DefaultSweetSpot(0.5f, 0.2f, 0f, 0.2f, 0f, 0f, 0.6f, 0.6f)
     );
-
     public static final AnotherWorldBiome ALPINE = new AnotherWorldBiomeImpl(
             "AnotherWorld:Alpine",
             "Alpine",
@@ -72,7 +51,6 @@ public class AnotherWorldBiomes extends BaseComponentSystem {
             // Occurs in very high Y-level, and cold
             new DefaultSweetSpot(0f, 0f, 0f, 0f, 0f, 0f, 1f, 1f)
     );
-
     public static final AnotherWorldBiome CLIFF = new AnotherWorldBiomeImpl(
             "AnotherWorld:Cliff",
             "Cliff",
@@ -80,6 +58,8 @@ public class AnotherWorldBiomes extends BaseComponentSystem {
             // Cold, but reasonably humid, usually on high levels
             new DefaultSweetSpot(0f, 0f, 0f, 0f, 1f, 1f, 0f, 0f)
     );
+    @In
+    private BiomeRegistry registry;
 
     @Override
     public void preBegin() {

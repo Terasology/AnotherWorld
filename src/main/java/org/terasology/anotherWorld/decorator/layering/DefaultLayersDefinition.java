@@ -1,39 +1,26 @@
-/*
- * Copyright 2015 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.anotherWorld.decorator.layering;
 
 import org.terasology.anotherWorld.util.ChunkRandom;
 import org.terasology.anotherWorld.util.PDist;
+import org.terasology.engine.math.ChunkMath;
+import org.terasology.engine.math.Region3i;
+import org.terasology.engine.utilities.random.Random;
+import org.terasology.engine.world.block.Block;
+import org.terasology.engine.world.chunks.CoreChunk;
+import org.terasology.engine.world.generation.Region;
+import org.terasology.engine.world.generation.facets.SurfaceHeightFacet;
 import org.terasology.gestalt.naming.Name;
-import org.terasology.math.ChunkMath;
-import org.terasology.math.Region3i;
 import org.terasology.math.TeraMath;
-import org.terasology.utilities.random.Random;
-import org.terasology.world.block.Block;
-import org.terasology.world.chunks.CoreChunk;
-import org.terasology.world.generation.Region;
-import org.terasology.world.generation.facets.SurfaceHeightFacet;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class DefaultLayersDefinition implements LayersDefinition {
-    private List<LayerDefinition> layerDefinitions = new LinkedList<>();
-    private int seaLevel;
-    private Name biomeId;
+    private final List<LayerDefinition> layerDefinitions = new LinkedList<>();
+    private final int seaLevel;
+    private final Name biomeId;
 
     public DefaultLayersDefinition(int seaLevel, Name biomeId) {
         this.seaLevel = seaLevel;
@@ -50,7 +37,8 @@ public class DefaultLayersDefinition implements LayersDefinition {
     }
 
     @Override
-    public void generateInChunk(long seed, CoreChunk chunk, Region region, int x, int z, LayeringConfig layeringConfig) {
+    public void generateInChunk(long seed, CoreChunk chunk, Region region, int x, int z,
+                                LayeringConfig layeringConfig) {
         Random random = ChunkRandom.getChunkRandom(seed, chunk.getPosition(), 349 * (31 * x + z));
         int groundLevel = TeraMath.floorToInt(region.getFacet(SurfaceHeightFacet.class).getWorld(x, z));
         boolean underSea = groundLevel < seaLevel;
@@ -98,9 +86,9 @@ public class DefaultLayersDefinition implements LayersDefinition {
     }
 
     private static final class LayerDefinition {
-        private PDist thickness;
-        private Block block;
-        private boolean generateUnderSee;
+        private final PDist thickness;
+        private final Block block;
+        private final boolean generateUnderSee;
 
         private LayerDefinition(PDist thickness, Block block, boolean generateUnderSee) {
             this.thickness = thickness;

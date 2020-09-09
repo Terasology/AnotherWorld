@@ -1,31 +1,18 @@
-/*
- * Copyright 2015 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.anotherWorld;
 
 import org.terasology.biomesAPI.Biome;
 
 /**
- * Biomes used by the Another World generation framework need additional properties that are defined
- * in this extension of the core biome interface.
+ * Biomes used by the Another World generation framework need additional properties that are defined in this extension
+ * of the core biome interface.
  */
 public interface AnotherWorldBiome extends Biome {
 
     /**
-     * What is the closest relative to this biome. Used when a mod requires to know the conditions in the biome,
-     * but do not know this biome by it's ID. Only the core biomes can return a null value for this method.
+     * What is the closest relative to this biome. Used when a mod requires to know the conditions in the biome, but do
+     * not know this biome by it's ID. Only the core biomes can return a null value for this method.
      *
      * @return
      */
@@ -47,12 +34,11 @@ public interface AnotherWorldBiome extends Biome {
     SweetSpot getSweetSpot();
 
     /**
-     * Each value specifies what is the desired value for the field, for this biome to be allocated to a spot in the world.
-     * Biome also specifies how important this field is, when determining the best fit. For example, if a biome doesn't really
-     * care that much about temperature fitting the desired value, but does care about humidity to be around 0.9 (90%), than
-     * it should specify high weight for humidity, and low weight for temperature.
-     * All the values below have to be in range of 0<=value<=1.
-     * All the weights HAVE TO add up to 1.
+     * Each value specifies what is the desired value for the field, for this biome to be allocated to a spot in the
+     * world. Biome also specifies how important this field is, when determining the best fit. For example, if a biome
+     * doesn't really care that much about temperature fitting the desired value, but does care about humidity to be
+     * around 0.9 (90%), than it should specify high weight for humidity, and low weight for temperature. All the values
+     * below have to be in range of 0<=value<=1. All the weights HAVE TO add up to 1.
      */
     interface SweetSpot {
         float getHumidity();
