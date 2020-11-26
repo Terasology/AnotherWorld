@@ -15,10 +15,10 @@
  */
 package org.terasology.anotherWorld.generation;
 
-import org.terasology.anotherWorld.SparseObjectFacet3D;
 import org.terasology.math.Region3i;
 import org.terasology.world.block.Block;
 import org.terasology.world.generation.Border3D;
+import org.terasology.world.generation.facets.base.SparseObjectFacet3D;
 
 public class SurfaceBlockFacet extends SparseObjectFacet3D<Block> {
     public SurfaceBlockFacet(Region3i targetRegion, Border3D border) {
