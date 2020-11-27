@@ -15,6 +15,7 @@
  */
 package org.terasology.anotherWorld.generation;
 
+import com.google.common.base.Function;
 import org.terasology.anotherWorld.TerrainDeformation;
 import org.terasology.anotherWorld.util.alpha.IdentityAlphaFunction;
 import org.terasology.math.TeraMath;
@@ -26,11 +27,9 @@ import org.terasology.world.generation.Border3D;
 import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Produces;
-import org.terasology.world.generation.facets.SurfaceHeightFacet;
+import org.terasology.world.generation.facets.ElevationFacet;
 
-import com.google.common.base.Function;
-
-@Produces(SurfaceHeightFacet.class)
+@Produces(ElevationFacet.class)
 public class PerlinSurfaceHeightProvider implements FacetProvider {
     private static final float MIN_MULTIPLIER = 0.00005f;
     private static final float MAX_MULTIPLIER = 0.001f;
@@ -108,8 +107,8 @@ public class PerlinSurfaceHeightProvider implements FacetProvider {
 
     @Override
     public void process(GeneratingRegion region) {
-        Border3D border = region.getBorderForFacet(SurfaceHeightFacet.class);
-        SurfaceHeightFacet facet = new SurfaceHeightFacet(region.getRegion(), border);
+        Border3D border = region.getBorderForFacet(ElevationFacet.class);
+        ElevationFacet facet = new ElevationFacet(region.getRegion(), border);
 
         for (BaseVector2i position : facet.getWorldRegion().contents()) {
             float noiseValue = getNoiseInWorld(position.x(), position.y());
@@ -126,6 +125,6 @@ public class PerlinSurfaceHeightProvider implements FacetProvider {
             }
         }
 
-        region.setRegionFacet(SurfaceHeightFacet.class, facet);
+        region.setRegionFacet(ElevationFacet.class, facet);
     }
 }

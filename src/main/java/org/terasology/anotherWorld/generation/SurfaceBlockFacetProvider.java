@@ -20,10 +20,10 @@ import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Produces;
 import org.terasology.world.generation.Requires;
-import org.terasology.world.generation.facets.SurfaceHeightFacet;
+import org.terasology.world.generation.facets.SurfacesFacet;
 
 @Produces(SurfaceBlockFacet.class)
-@Requires({@Facet(BlockLayersFacet.class), @Facet(SurfaceHeightFacet.class),
+@Requires({@Facet(BlockLayersFacet.class), @Facet(SurfacesFacet.class),
         @Facet(CaveFacet.class), @Facet(OreBlockFacet.class)})
 public class SurfaceBlockFacetProvider implements FacetProvider {
     @Override

@@ -20,12 +20,11 @@ import org.terasology.anotherWorld.ChunkDecorator;
 import org.terasology.anotherWorld.generation.TerrainVariationFacet;
 import org.terasology.anotherWorld.util.Provider;
 import org.terasology.math.ChunkMath;
-import org.terasology.math.TeraMath;
 import org.terasology.math.geom.Vector3i;
 import org.terasology.world.block.Block;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
-import org.terasology.world.generation.facets.SurfaceHeightFacet;
+import org.terasology.world.generation.facets.SurfacesFacet;
 
 public class BeachDecorator implements ChunkDecorator {
     private Predicate<Block> blockFilter;
@@ -55,14 +54,15 @@ public class BeachDecorator implements ChunkDecorator {
 
     @Override
     public void generateChunk(CoreChunk chunk, Region chunkRegion) {
-        SurfaceHeightFacet surfaceHeightFacet = chunkRegion.getFacet(SurfaceHeightFacet.class);
+        SurfacesFacet surfacesFacet = chunkRegion.getFacet(SurfacesFacet.class);
         TerrainVariationFacet terrainVariationFacet = chunkRegion.getFacet(TerrainVariationFacet.class);
         for (Vector3i position : chunk.getRegion()) {
-            int groundLevel = TeraMath.floorToInt(surfaceHeightFacet.getWorld(position.x, position.z));
-            if (groundLevel <= toLevel && groundLevel >= fromLevel) {
-                for (int y = fromLevel; y <= toLevel; y++) {
-                    if (blockFilter.apply(chunk.getBlock(ChunkMath.calcRelativeBlockPos(position)))) {
-                        chunk.setBlock(ChunkMath.calcRelativeBlockPos(position), beachBlockProvider.provide(terrainVariationFacet.get(position.x, position.y, position.z)));
+            for (int groundLevel : surfacesFacet.getWorldColumn(position.x, position.z)) {
+                if (groundLevel <= toLevel && groundLevel >= fromLevel) {
+                    for (int y = fromLevel; y <= toLevel; y++) {
+                        if (blockFilter.apply(chunk.getBlock(ChunkMath.calcRelativeBlockPos(position)))) {
+                            chunk.setBlock(ChunkMath.calcRelativeBlockPos(position), beachBlockProvider.provide(terrainVariationFacet.get(position.x, position.y, position.z)));
+                        }
                     }
                 }
             }
