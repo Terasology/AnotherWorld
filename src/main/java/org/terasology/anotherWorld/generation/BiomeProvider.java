@@ -19,22 +19,20 @@ import org.terasology.anotherWorld.AnotherWorldBiome;
 import org.terasology.biomesAPI.BiomeRegistry;
 import org.terasology.math.TeraMath;
 import org.terasology.math.geom.BaseVector2i;
-import org.terasology.math.geom.Vector2i;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.world.generation.Facet;
 import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Produces;
 import org.terasology.world.generation.Requires;
-import org.terasology.world.generation.facets.SeaLevelFacet;
-import org.terasology.world.generation.facets.SurfaceHeightFacet;
+import org.terasology.world.generation.facets.ElevationFacet;
 
 
 @Produces(BiomeFacet.class)
 @Requires({@Facet(TemperatureFacet.class),
         @Facet(HumidityFacet.class),
         @Facet(HillynessFacet.class),
-        @Facet(SurfaceHeightFacet.class)})
+        @Facet(ElevationFacet.class)})
 public class BiomeProvider implements FacetProvider {
 
     @Override
@@ -47,12 +45,12 @@ public class BiomeProvider implements FacetProvider {
         TemperatureFacet temperatureFacet = region.getRegionFacet(TemperatureFacet.class);
         HumidityFacet surfaceHumidityFacet = region.getRegionFacet(HumidityFacet.class);
         HillynessFacet hillynessFacet = region.getRegionFacet(HillynessFacet.class);
-        SurfaceHeightFacet surfaceHeightFacet = region.getRegionFacet(SurfaceHeightFacet.class);
+        ElevationFacet elevationFacet = region.getRegionFacet(ElevationFacet.class);
 
         BiomeRegistry biomeRegistry = CoreRegistry.get(BiomeRegistry.class);
 
         for (BaseVector2i pos : facet.getWorldRegion().contents()) {
-            int surfaceHeight = TeraMath.floorToInt(surfaceHeightFacet.getWorld(pos));
+            int surfaceHeight = TeraMath.floorToInt(elevationFacet.getWorld(pos));
             float temp = temperatureFacet.get(pos.x(), surfaceHeight, pos.y());
             float hum = surfaceHumidityFacet.get(pos.x(), surfaceHeight, pos.y());
             float hillyness = hillynessFacet.getWorld(pos);

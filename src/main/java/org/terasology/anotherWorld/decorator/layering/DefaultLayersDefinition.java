@@ -25,7 +25,7 @@ import org.terasology.utilities.random.Random;
 import org.terasology.world.block.Block;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
-import org.terasology.world.generation.facets.SurfaceHeightFacet;
+import org.terasology.world.generation.facets.ElevationFacet;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -52,7 +52,8 @@ public class DefaultLayersDefinition implements LayersDefinition {
     @Override
     public void generateInChunk(long seed, CoreChunk chunk, Region region, int x, int z, LayeringConfig layeringConfig) {
         Random random = ChunkRandom.getChunkRandom(seed, chunk.getPosition(), 349 * (31 * x + z));
-        int groundLevel = TeraMath.floorToInt(region.getFacet(SurfaceHeightFacet.class).getWorld(x, z));
+        // The ElevationFacet isn't really appropriate here, but the algorithm isn't very compatible with using the DensityFacet instead.
+        int groundLevel = TeraMath.floorToInt(region.getFacet(ElevationFacet.class).getWorld(x, z));
         boolean underSea = groundLevel < seaLevel;
 
         Region3i chunkRegion = chunk.getRegion();
