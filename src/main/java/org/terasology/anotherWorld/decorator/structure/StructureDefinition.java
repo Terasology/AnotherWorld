@@ -15,11 +15,11 @@
  */
 package org.terasology.anotherWorld.decorator.structure;
 
-import org.terasology.math.Region3i;
-import org.terasology.math.geom.Vector3i;
+import org.joml.Vector3i;
+import org.terasology.world.block.BlockRegion;
 
 import java.util.Collection;
 
 public interface StructureDefinition {
-    Collection<Structure> generateStructures(Vector3i chunkSize, long seed, Region3i region);
+    Collection<Structure> generateStructures(Vector3i chunkSize, long seed, BlockRegion region);
 }

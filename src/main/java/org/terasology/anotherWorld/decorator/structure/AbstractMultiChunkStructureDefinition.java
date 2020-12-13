@@ -15,12 +15,13 @@
  */
 package org.terasology.anotherWorld.decorator.structure;
 
+import org.joml.Vector3i;
 import org.terasology.anotherWorld.util.ChunkRandom;
 import org.terasology.anotherWorld.util.PDist;
 import org.terasology.math.ChunkMath;
-import org.terasology.math.Region3i;
-import org.terasology.math.geom.Vector3i;
+import org.terasology.math.JomlUtil;
 import org.terasology.utilities.random.Random;
+import org.terasology.world.block.BlockRegion;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -34,7 +35,7 @@ public abstract class AbstractMultiChunkStructureDefinition implements Structure
     }
 
     @Override
-    public final Collection<Structure> generateStructures(Vector3i chunkSize, long seed, Region3i region) {
+    public final Collection<Structure> generateStructures(Vector3i chunkSize, long seed, BlockRegion region) {
         List<Structure> result = new LinkedList<>();
         float maxRange = getMaxRange();
 
@@ -42,8 +43,8 @@ public abstract class AbstractMultiChunkStructureDefinition implements Structure
         int chunksRangeToEvaluateY = (int) Math.ceil(maxRange / chunkSize.y);
         int chunksRangeToEvaluateZ = (int) Math.ceil(maxRange / chunkSize.z);
 
-        Vector3i minChunk = ChunkMath.calcChunkPos(region.min());
-        Vector3i maxChunk = ChunkMath.calcChunkPos(region.max());
+        Vector3i minChunk = ChunkMath.calcChunkPos(region.getMin(new Vector3i()), new Vector3i());
+        Vector3i maxChunk = ChunkMath.calcChunkPos(region.getMax(new Vector3i()), new Vector3i());
 
         for (int chunkX = minChunk.x - chunksRangeToEvaluateX; chunkX <= maxChunk.x + chunksRangeToEvaluateX; chunkX++) {
             for (int chunkY = minChunk.y - chunksRangeToEvaluateY; chunkY <= maxChunk.y + chunksRangeToEvaluateY; chunkY++) {
@@ -58,7 +59,7 @@ public abstract class AbstractMultiChunkStructureDefinition implements Structure
     }
 
     protected final void generateStructuresForChunkWithFrequency(List<Structure> result, long seed, Vector3i chunkPosition, Vector3i chunkSize) {
-        Random random = ChunkRandom.getChunkRandom(seed, chunkPosition, getGeneratorSalt());
+        Random random = ChunkRandom.getChunkRandom(seed, JomlUtil.from(chunkPosition), getGeneratorSalt());
 
         float structuresInChunk = frequency.getValue(random);
         int structuresToGenerateInChunk = (int) structuresInChunk;

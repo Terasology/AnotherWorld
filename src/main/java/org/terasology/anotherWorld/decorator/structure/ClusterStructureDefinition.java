@@ -15,8 +15,8 @@
  */
 package org.terasology.anotherWorld.decorator.structure;
 
+import org.joml.Vector3i;
 import org.terasology.anotherWorld.util.PDist;
-import org.terasology.math.geom.Vector3i;
 import org.terasology.utilities.random.Random;
 import org.terasology.world.block.Block;
 

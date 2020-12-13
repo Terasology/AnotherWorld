@@ -16,14 +16,14 @@
 package org.terasology.anotherWorld.generation;
 
 import org.terasology.anotherWorld.decorator.layering.LayerDefinition;
-import org.terasology.math.Region3i;
+import org.terasology.world.block.BlockRegion;
 import org.terasology.world.generation.Border3D;
 import org.terasology.world.generation.facets.base.BaseObjectFacet2D;
 
 import java.util.List;
 
 public class BlockLayersFacet extends BaseObjectFacet2D<List<LayerDefinition>> {
-    public BlockLayersFacet(Region3i targetRegion, Border3D border, Class<List<LayerDefinition>> objectType) {
+    public BlockLayersFacet(BlockRegion targetRegion, Border3D border, Class<List<LayerDefinition>> objectType) {
         super(targetRegion, border, objectType);
     }
 }

@@ -23,6 +23,7 @@ import org.terasology.math.TeraMath;
 import org.terasology.naming.Name;
 import org.terasology.utilities.random.Random;
 import org.terasology.world.block.Block;
+import org.terasology.world.block.BlockRegion;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
 import org.terasology.world.generation.facets.ElevationFacet;
@@ -56,10 +57,10 @@ public class DefaultLayersDefinition implements LayersDefinition {
         int groundLevel = TeraMath.floorToInt(region.getFacet(ElevationFacet.class).getWorld(x, z));
         boolean underSea = groundLevel < seaLevel;
 
-        Region3i chunkRegion = chunk.getRegion();
+        BlockRegion chunkRegion = chunk.getRegion();
         if (underSea) {
-            int seaBottom = Math.max(groundLevel + 1, chunkRegion.minY());
-            int seaTop = Math.min(seaLevel, chunkRegion.maxY());
+            int seaBottom = Math.max(groundLevel + 1, chunkRegion.getMinY());
+            int seaTop = Math.min(seaLevel, chunkRegion.getMaxY());
             for (int level = seaBottom; level <= seaTop; level++) {
 //                if (chunkRegion.encompasses(x, level, z)) {
                 chunk.setBlock(ChunkMath.calcRelativeBlockPos(x, level, z), layeringConfig.getSeaBlock());
@@ -73,7 +74,7 @@ public class DefaultLayersDefinition implements LayersDefinition {
                 int layerHeight = layerDefinition.thickness.getIntValue(random);
                 for (int i = 0; i < layerHeight; i++) {
                     if (level - i > 0) {
-                        if (chunkRegion.encompasses(x, level - i, z)) {
+                        if (chunkRegion.containsBlock(x, level - i, z)) {
                             chunk.setBlock(ChunkMath.calcRelativeBlockPos(x, level - i, z), layerDefinition.block);
                         }
                     }
@@ -86,14 +87,14 @@ public class DefaultLayersDefinition implements LayersDefinition {
         }
 
         for (int i = level; i > 0; i--) {
-            if (chunkRegion.encompasses(x, i, z)) {
+            if (chunkRegion.containsBlock(x, i, z)) {
 
                 chunk.setBlock(ChunkMath.calcRelativeBlockPos(x, i, z), layeringConfig.getMainBlock());
             }
         }
 
 
-        if (chunkRegion.encompasses(x, 0, z)) {
+        if (chunkRegion.containsBlock(x, 0, z)) {
             chunk.setBlock(ChunkMath.calcRelativeBlockPos(x, 0, z), layeringConfig.getBottomBlock());
         }
     }

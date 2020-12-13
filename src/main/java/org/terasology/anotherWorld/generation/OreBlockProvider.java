@@ -19,9 +19,11 @@ import com.google.common.base.Predicate;
 import org.terasology.anotherWorld.decorator.ore.OreDefinition;
 import org.terasology.anotherWorld.decorator.structure.Structure;
 import org.terasology.anotherWorld.decorator.structure.StructureDefinition;
+import org.terasology.math.JomlUtil;
 import org.terasology.math.Region3i;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.world.block.Block;
+import org.terasology.world.block.BlockRegion;
 import org.terasology.world.chunks.ChunkConstants;
 import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
@@ -56,7 +58,7 @@ public class OreBlockProvider implements FacetProvider {
         Structure.StructureCallback callback = new StructureCallbackImpl(oreBlockFacet.getWorldRegion(), oreBlockFacet);
 
         for (StructureDefinition structureDefinition : oreDefinitions.values()) {
-            Collection<Structure> structures = structureDefinition.generateStructures(ChunkConstants.CHUNK_SIZE, seed, oreBlockFacet.getWorldRegion());
+            Collection<Structure> structures = structureDefinition.generateStructures(JomlUtil.from(ChunkConstants.CHUNK_SIZE), seed, oreBlockFacet.getWorldRegion());
             for (Structure structure : structures) {
                 structure.generateStructure(callback);
             }
@@ -75,17 +77,17 @@ public class OreBlockProvider implements FacetProvider {
     }
 
     private static final class StructureCallbackImpl implements Structure.StructureCallback {
-        private Region3i region;
+        private BlockRegion region;
         private OreBlockFacet oreBlockFacet;
 
-        private StructureCallbackImpl(Region3i region, OreBlockFacet oreBlockFacet) {
+        private StructureCallbackImpl(BlockRegion region, OreBlockFacet oreBlockFacet) {
             this.region = region;
             this.oreBlockFacet = oreBlockFacet;
         }
 
         @Override
         public boolean canReplace(int x, int y, int z) {
-            return region.encompasses(x, y, z);
+            return region.containsBlock(x, y, z);
         }
 
         @Override
