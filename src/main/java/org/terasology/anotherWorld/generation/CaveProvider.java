@@ -87,7 +87,7 @@ public class CaveProvider implements FacetProvider {
 
         @Override
         public boolean canReplace(int x, int y, int z) {
-            return region.containsBlock(x, y, z);
+            return region.contains(x, y, z);
         }
 
         @Override

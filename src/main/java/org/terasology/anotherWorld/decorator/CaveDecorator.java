@@ -22,7 +22,6 @@ import org.terasology.anotherWorld.decorator.structure.StructureDefinition;
 import org.terasology.anotherWorld.decorator.structure.VeinsStructureDefinition;
 import org.terasology.anotherWorld.util.PDist;
 import org.terasology.math.JomlUtil;
-import org.terasology.math.Region3i;
 import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.block.BlockRegion;
@@ -84,12 +83,12 @@ public class CaveDecorator implements ChunkDecorator {
 
         @Override
         public boolean canReplace(int x, int y, int z) {
-            return region.containsBlock(x, y, z) && blockFilter.apply(chunk.getBlock(x - region.getMinX(), y - region.getMinY(), z - region.getMinZ()));
+            return region.contains(x, y, z) && blockFilter.apply(chunk.getBlock(x - region.minX(), y - region.minY(), z - region.minZ()));
         }
 
         @Override
         public void replaceBlock(int x, int y, int z, float force, Block block) {
-            chunk.setBlock(x - region.getMinX(), y - region.getMinY(), z - region.getMinZ(), block);
+            chunk.setBlock(x - region.minX(), y - region.minY(), z - region.minZ(), block);
         }
     }
 }

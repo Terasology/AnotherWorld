@@ -19,7 +19,6 @@ import org.terasology.anotherWorld.AnotherWorldBiome;
 import org.terasology.anotherWorld.ChunkDecorator;
 import org.terasology.anotherWorld.generation.BiomeFacet;
 import org.terasology.biomesAPI.BiomeRegistry;
-import org.terasology.math.Region3i;
 import org.terasology.naming.Name;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.world.block.BlockRegion;
@@ -56,8 +55,8 @@ public class LayeringDecorator implements ChunkDecorator {
         BiomeRegistry biomeRegistry = CoreRegistry.get(BiomeRegistry.class);
 
         BlockRegion chunkRegion = chunk.getRegion();
-        for (int x = chunkRegion.getMinX(); x <= chunkRegion.getMaxX(); x++) {
-            for (int z = chunkRegion.getMinZ(); z <= chunkRegion.getMaxZ(); z++) {
+        for (int x = chunkRegion.minX(); x <= chunkRegion.maxX(); x++) {
+            for (int z = chunkRegion.minZ(); z <= chunkRegion.maxZ(); z++) {
                 AnotherWorldBiome biome = biomeFacet.getWorld(x, z);
                 LayersDefinition matchingLayers = findMatchingLayers(biomeRegistry, biome);
                 if (matchingLayers != null) {

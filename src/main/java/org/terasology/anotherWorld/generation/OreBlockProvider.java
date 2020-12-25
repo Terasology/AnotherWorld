@@ -20,7 +20,6 @@ import org.terasology.anotherWorld.decorator.ore.OreDefinition;
 import org.terasology.anotherWorld.decorator.structure.Structure;
 import org.terasology.anotherWorld.decorator.structure.StructureDefinition;
 import org.terasology.math.JomlUtil;
-import org.terasology.math.Region3i;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockRegion;
@@ -87,7 +86,7 @@ public class OreBlockProvider implements FacetProvider {
 
         @Override
         public boolean canReplace(int x, int y, int z) {
-            return region.containsBlock(x, y, z);
+            return region.contains(x, y, z);
         }
 
         @Override
