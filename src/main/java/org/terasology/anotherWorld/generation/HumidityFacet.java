@@ -16,7 +16,7 @@
 package org.terasology.anotherWorld.generation;
 
 import org.terasology.climateConditions.ConditionsBaseField;
-import org.terasology.math.Region3i;
+import org.terasology.world.block.BlockRegion;
 import org.terasology.world.generation.Border3D;
 import org.terasology.world.generation.facets.base.BaseFacet3D;
 
@@ -26,7 +26,7 @@ import org.terasology.world.generation.facets.base.BaseFacet3D;
 public class HumidityFacet extends BaseFacet3D {
     private ConditionsBaseField humidityBaseField;
 
-    public HumidityFacet(Region3i targetRegion, Border3D border, ConditionsBaseField humidityBaseField) {
+    public HumidityFacet(BlockRegion targetRegion, Border3D border, ConditionsBaseField humidityBaseField) {
         super(targetRegion, border);
         this.humidityBaseField = humidityBaseField;
     }

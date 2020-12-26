@@ -16,7 +16,7 @@
 package org.terasology.anotherWorld.generation;
 
 import org.terasology.climateConditions.ConditionsBaseField;
-import org.terasology.math.Region3i;
+import org.terasology.world.block.BlockRegion;
 import org.terasology.world.generation.Border3D;
 import org.terasology.world.generation.facets.base.BaseFacet3D;
 
@@ -26,7 +26,7 @@ import org.terasology.world.generation.facets.base.BaseFacet3D;
 public class TemperatureFacet extends BaseFacet3D {
     private ConditionsBaseField temperatureBaseField;
 
-    public TemperatureFacet(Region3i targetRegion, Border3D border, ConditionsBaseField temperatureBaseField) {
+    public TemperatureFacet(BlockRegion targetRegion, Border3D border, ConditionsBaseField temperatureBaseField) {
         super(targetRegion, border);
         this.temperatureBaseField = temperatureBaseField;
     }

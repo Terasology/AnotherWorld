@@ -15,8 +15,8 @@
  */
 package org.terasology.anotherWorld;
 
-import org.terasology.math.Region3i;
 import org.terasology.math.geom.Vector3i;
+import org.terasology.world.block.BlockRegion;
 import org.terasology.world.generation.Border3D;
 import org.terasology.world.generation.facets.base.BaseFacet3D;
 
@@ -30,7 +30,7 @@ import java.util.Map;
 public class SparseObjectFacet3D<T> extends BaseFacet3D {
     private Map<Vector3i, T> positions = new HashMap<>();
 
-    public SparseObjectFacet3D(Region3i targetRegion, Border3D border) {
+    public SparseObjectFacet3D(BlockRegion targetRegion, Border3D border) {
         super(targetRegion, border);
     }
 

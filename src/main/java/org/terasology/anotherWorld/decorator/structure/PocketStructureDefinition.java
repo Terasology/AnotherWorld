@@ -15,9 +15,11 @@
  */
 package org.terasology.anotherWorld.decorator.structure;
 
+import org.joml.RoundingMode;
+import org.joml.Vector3f;
+import org.joml.Vector3i;
 import org.terasology.anotherWorld.util.PDist;
 import org.terasology.anotherWorld.util.Transform;
-import org.terasology.math.geom.Vector3i;
 import org.terasology.utilities.procedural.Noise3D;
 import org.terasology.utilities.procedural.SimplexNoise;
 import org.terasology.utilities.random.Random;
@@ -127,13 +129,13 @@ public class PocketStructureDefinition extends AbstractMultiChunkStructureDefini
             float minY = Math.min(bb[1], bb[4]);
             float minZ = Math.min(bb[2], bb[5]);
 
-            minPosition = new Vector3i(minX, minY, minZ);
+            minPosition = new Vector3i(new Vector3f(minX, minY, minZ), RoundingMode.FLOOR);
 
             float maxX = Math.max(bb[0], bb[3]);
             float maxY = Math.max(bb[1], bb[4]);
             float maxZ = Math.max(bb[2], bb[5]);
 
-            maxPosition = new Vector3i(maxX + 1, maxY + 1, maxZ + 1);
+            maxPosition = new Vector3i(new Vector3f(maxX + 1, maxY + 1, maxZ + 1), RoundingMode.FLOOR);
 
             // calculate noise levels from size of BB
             float maxSize = Math.max(maxX - minX, Math.max(maxY - minY, maxZ - minZ)) * 0.2F;

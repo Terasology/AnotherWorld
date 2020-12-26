@@ -1,6 +1,6 @@
 {
     "id": "AnotherWorld",
-    "version": "1.0.0",
+    "version": "1.0.0-SNAPSHOT",
     "author": "Marcin Sciesinski <marcins78@gmail.com>",
     "displayName": "AnotherWorld",
     "description": "Pluggable world generator. Structure (Ore) generation and various util classes are very heavily based on JRoush's implementation of CustomOreGen.",

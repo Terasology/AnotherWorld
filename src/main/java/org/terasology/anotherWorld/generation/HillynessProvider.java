@@ -15,8 +15,8 @@
  */
 package org.terasology.anotherWorld.generation;
 
-import org.terasology.math.Region3i;
 import org.terasology.math.TeraMath;
+import org.terasology.world.block.BlockRegion;
 import org.terasology.world.generation.Border3D;
 import org.terasology.world.generation.Facet;
 import org.terasology.world.generation.FacetBorder;
@@ -45,7 +45,7 @@ public class HillynessProvider implements FacetProvider {
         HillynessFacet facet = new HillynessFacet(region.getRegion(), border);
         ElevationFacet elevationFacet = region.getRegionFacet(ElevationFacet.class);
 
-        Region3i worldRegion = region.getRegion();
+        BlockRegion worldRegion = region.getRegion();
 
         for (int x = worldRegion.minX(); x <= worldRegion.maxX(); x++) {
             for (int z = worldRegion.minZ(); z <= worldRegion.maxZ(); z++) {

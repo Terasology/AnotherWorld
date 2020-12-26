@@ -19,9 +19,10 @@ import com.google.common.base.Predicate;
 import org.terasology.anotherWorld.ChunkDecorator;
 import org.terasology.anotherWorld.decorator.structure.Structure;
 import org.terasology.anotherWorld.decorator.structure.StructureDefinition;
-import org.terasology.math.Region3i;
+import org.terasology.math.JomlUtil;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.world.block.Block;
+import org.terasology.world.block.BlockRegion;
 import org.terasology.world.chunks.ChunkConstants;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
@@ -52,7 +53,7 @@ public class OreDecorator implements ChunkDecorator {
         Structure.StructureCallback callback = new StructureCallbackImpl(chunk);
 
         for (StructureDefinition structureDefinition : oreDefinitions.values()) {
-            Collection<Structure> structures = structureDefinition.generateStructures(ChunkConstants.CHUNK_SIZE, seed, chunkRegion.getRegion());
+            Collection<Structure> structures = structureDefinition.generateStructures(JomlUtil.from(ChunkConstants.CHUNK_SIZE), seed, chunkRegion.getRegion());
             for (Structure structure : structures) {
                 structure.generateStructure(callback);
             }
@@ -70,7 +71,7 @@ public class OreDecorator implements ChunkDecorator {
 
     private final class StructureCallbackImpl implements Structure.StructureCallback {
         private CoreChunk chunk;
-        private Region3i region;
+        private BlockRegion region;
 
         private StructureCallbackImpl(CoreChunk chunk) {
             this.chunk = chunk;
@@ -79,7 +80,7 @@ public class OreDecorator implements ChunkDecorator {
 
         @Override
         public boolean canReplace(int x, int y, int z) {
-            return region.encompasses(x, y, z) && blockFilter.apply(chunk.getBlock(x - region.minX(), y - region.minY(), z - region.minZ()));
+            return region.contains(x, y, z) && blockFilter.apply(chunk.getBlock(x - region.minX(), y - region.minY(), z - region.minZ()));
         }
 
         @Override

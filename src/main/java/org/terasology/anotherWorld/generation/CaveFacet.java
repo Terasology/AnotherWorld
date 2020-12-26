@@ -16,15 +16,15 @@
 package org.terasology.anotherWorld.generation;
 
 import com.google.common.base.Predicate;
-import org.terasology.math.Region3i;
 import org.terasology.world.block.Block;
+import org.terasology.world.block.BlockRegion;
 import org.terasology.world.generation.Border3D;
 import org.terasology.world.generation.facets.base.BaseBooleanFieldFacet3D;
 
 public class CaveFacet extends BaseBooleanFieldFacet3D {
     private Predicate<Block> replacePredicate;
 
-    public CaveFacet(Region3i targetRegion, Border3D border, Predicate<Block> replacePredicate) {
+    public CaveFacet(BlockRegion targetRegion, Border3D border, Predicate<Block> replacePredicate) {
         super(targetRegion, border);
         this.replacePredicate = replacePredicate;
     }
