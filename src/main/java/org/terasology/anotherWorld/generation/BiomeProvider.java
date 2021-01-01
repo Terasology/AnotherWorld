@@ -15,6 +15,7 @@
  */
 package org.terasology.anotherWorld.generation;
 
+import org.joml.Vector2ic;
 import org.terasology.anotherWorld.AnotherWorldBiome;
 import org.terasology.biomesAPI.BiomeRegistry;
 import org.terasology.math.TeraMath;
@@ -49,7 +50,7 @@ public class BiomeProvider implements FacetProvider {
 
         BiomeRegistry biomeRegistry = CoreRegistry.get(BiomeRegistry.class);
 
-        for (BaseVector2i pos : facet.getWorldRegion().contents()) {
+        for (Vector2ic pos : facet.getWorldRegion()) {
             int surfaceHeight = TeraMath.floorToInt(elevationFacet.getWorld(pos));
             float temp = temperatureFacet.get(pos.x(), surfaceHeight, pos.y());
             float hum = surfaceHumidityFacet.get(pos.x(), surfaceHeight, pos.y());
