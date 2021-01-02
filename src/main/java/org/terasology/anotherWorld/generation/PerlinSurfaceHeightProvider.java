@@ -111,7 +111,7 @@ public class PerlinSurfaceHeightProvider implements FacetProvider {
         Border3D border = region.getBorderForFacet(ElevationFacet.class);
         ElevationFacet facet = new ElevationFacet(region.getRegion(), border);
 
-        for (Vector2ic position : facet.getWorldRegion()) {
+        for (Vector2ic position : facet.getWorldArea()) {
             float noiseValue = getNoiseInWorld(position.x(), position.y());
             if (noiseValue < seaFrequency) {
                 // Number in range 0<=alpha<1

@@ -50,7 +50,7 @@ public class BiomeProvider implements FacetProvider {
 
         BiomeRegistry biomeRegistry = CoreRegistry.get(BiomeRegistry.class);
 
-        for (Vector2ic pos : facet.getWorldRegion()) {
+        for (Vector2ic pos : facet.getWorldArea()) {
             int surfaceHeight = TeraMath.floorToInt(elevationFacet.getWorld(pos));
             float temp = temperatureFacet.get(pos.x(), surfaceHeight, pos.y());
             float hum = surfaceHumidityFacet.get(pos.x(), surfaceHeight, pos.y());
