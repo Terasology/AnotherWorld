@@ -16,6 +16,7 @@
 package org.terasology.anotherWorld.generation;
 
 import com.google.common.base.Function;
+import org.joml.Vector2ic;
 import org.terasology.anotherWorld.TerrainDeformation;
 import org.terasology.anotherWorld.util.alpha.IdentityAlphaFunction;
 import org.terasology.math.TeraMath;
@@ -110,7 +111,7 @@ public class PerlinSurfaceHeightProvider implements FacetProvider {
         Border3D border = region.getBorderForFacet(ElevationFacet.class);
         ElevationFacet facet = new ElevationFacet(region.getRegion(), border);
 
-        for (BaseVector2i position : facet.getWorldRegion().contents()) {
+        for (Vector2ic position : facet.getWorldArea()) {
             float noiseValue = getNoiseInWorld(position.x(), position.y());
             if (noiseValue < seaFrequency) {
                 // Number in range 0<=alpha<1

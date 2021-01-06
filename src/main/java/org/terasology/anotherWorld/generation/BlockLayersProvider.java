@@ -18,6 +18,7 @@ package org.terasology.anotherWorld.generation;
 import java.util.List;
 import java.util.Map;
 
+import org.joml.Vector2ic;
 import org.terasology.anotherWorld.AnotherWorldBiome;
 import org.terasology.anotherWorld.decorator.layering.LayerDefinition;
 import org.terasology.anotherWorld.decorator.layering.LayeringConfig;
@@ -61,7 +62,7 @@ public class BlockLayersProvider implements FacetProvider {
         BlockLayersFacet result = new BlockLayersFacet(region.getRegion(), border, (Class<List<LayerDefinition>>) (Class<?>) List.class);
         BiomeFacet biomeFacet = region.getRegionFacet(BiomeFacet.class);
 
-        for (BaseVector2i pos : result.getRelativeRegion().contents()) {
+        for (Vector2ic pos : result.getRelativeArea()) {
             AnotherWorldBiome biome = biomeFacet.get(pos);
             result.set(pos, biomeLayerDefinitions.get(biome.getId()));
         }
