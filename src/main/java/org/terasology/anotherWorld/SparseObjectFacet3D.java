@@ -11,9 +11,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Marcin on 2014-10-21.
- */
 public class SparseObjectFacet3D<T> extends BaseFacet3D {
     private Map<Vector3i, T> positions = new HashMap<>();
 
