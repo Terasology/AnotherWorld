@@ -1,20 +1,8 @@
-/*
- * Copyright 2015 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2021 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.anotherWorld.decorator.layering;
 
+import org.joml.Vector3i;
 import org.terasology.anotherWorld.util.ChunkRandom;
 import org.terasology.anotherWorld.util.PDist;
 import org.terasology.math.ChunkMath;
@@ -23,6 +11,7 @@ import org.terasology.naming.Name;
 import org.terasology.utilities.random.Random;
 import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockRegion;
+import org.terasology.world.chunks.Chunks;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
 import org.terasology.world.generation.facets.ElevationFacet;
@@ -51,7 +40,7 @@ public class DefaultLayersDefinition implements LayersDefinition {
 
     @Override
     public void generateInChunk(long seed, CoreChunk chunk, Region region, int x, int z, LayeringConfig layeringConfig) {
-        Random random = ChunkRandom.getChunkRandom(seed, chunk.getPosition(), 349 * (31 * x + z));
+        Random random = ChunkRandom.getChunkRandom(seed, chunk.getPosition(new Vector3i()), 349 * (31 * x + z));
         // The ElevationFacet isn't really appropriate here, but the algorithm isn't very compatible with using the DensityFacet instead.
         int groundLevel = TeraMath.floorToInt(region.getFacet(ElevationFacet.class).getWorld(x, z));
         boolean underSea = groundLevel < seaLevel;
@@ -62,7 +51,7 @@ public class DefaultLayersDefinition implements LayersDefinition {
             int seaTop = Math.min(seaLevel, chunkRegion.maxY());
             for (int level = seaBottom; level <= seaTop; level++) {
 //                if (chunkRegion.encompasses(x, level, z)) {
-                chunk.setBlock(ChunkMath.calcRelativeBlockPos(x, level, z), layeringConfig.getSeaBlock());
+                chunk.setBlock(Chunks.toRelative(x, level, z, new Vector3i()), layeringConfig.getSeaBlock());
 //                }
             }
         }
@@ -74,7 +63,7 @@ public class DefaultLayersDefinition implements LayersDefinition {
                 for (int i = 0; i < layerHeight; i++) {
                     if (level - i > 0) {
                         if (chunkRegion.contains(x, level - i, z)) {
-                            chunk.setBlock(ChunkMath.calcRelativeBlockPos(x, level - i, z), layerDefinition.block);
+                            chunk.setBlock(Chunks.toRelative(x, level - i, z, new Vector3i()), layerDefinition.block);
                         }
                     }
                 }
@@ -88,13 +77,13 @@ public class DefaultLayersDefinition implements LayersDefinition {
         for (int i = level; i > 0; i--) {
             if (chunkRegion.contains(x, i, z)) {
 
-                chunk.setBlock(ChunkMath.calcRelativeBlockPos(x, i, z), layeringConfig.getMainBlock());
+                chunk.setBlock(Chunks.toRelative(x, i, z, new Vector3i()), layeringConfig.getMainBlock());
             }
         }
 
 
         if (chunkRegion.contains(x, 0, z)) {
-            chunk.setBlock(ChunkMath.calcRelativeBlockPos(x, 0, z), layeringConfig.getBottomBlock());
+            chunk.setBlock(Chunks.toRelative(x, 0, z, new Vector3i()), layeringConfig.getBottomBlock());
         }
     }
 
