@@ -19,7 +19,6 @@ import org.joml.Vector2ic;
 import org.terasology.anotherWorld.AnotherWorldBiome;
 import org.terasology.biomesAPI.BiomeRegistry;
 import org.terasology.math.TeraMath;
-import org.terasology.math.geom.BaseVector2i;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.world.generation.Facet;
 import org.terasology.world.generation.FacetProvider;
