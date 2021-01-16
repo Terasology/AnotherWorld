@@ -15,13 +15,15 @@
  */
 package org.terasology.anotherWorld;
 
-import org.terasology.math.geom.Vector2i;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
 import java.util.HashMap;
 import java.util.Map;
 
+//TODO: this class seems to be unused - can it be removed?
 public class ChunkInformation {
-    private Map<Vector2i, Integer> groundLevel = new HashMap<>();
+    private Map<Vector2ic, Integer> groundLevel = new HashMap<>();
 
     public void setPositionGroundLevel(int x, int z, int level) {
         groundLevel.put(new Vector2i(x, z), level);

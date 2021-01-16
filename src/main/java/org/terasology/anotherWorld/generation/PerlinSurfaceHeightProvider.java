@@ -20,7 +20,6 @@ import org.joml.Vector2ic;
 import org.terasology.anotherWorld.TerrainDeformation;
 import org.terasology.anotherWorld.util.alpha.IdentityAlphaFunction;
 import org.terasology.math.TeraMath;
-import org.terasology.math.geom.BaseVector2i;
 import org.terasology.utilities.procedural.BrownianNoise2D;
 import org.terasology.utilities.procedural.Noise2D;
 import org.terasology.utilities.procedural.SimplexNoise;
