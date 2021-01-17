@@ -23,6 +23,7 @@ import org.terasology.anotherWorld.generation.TerrainVariationFacet;
 import org.terasology.anotherWorld.util.Provider;
 import org.terasology.math.ChunkMath;
 import org.terasology.world.block.Block;
+import org.terasology.world.chunks.Chunks;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
 import org.terasology.world.generation.facets.SurfacesFacet;
@@ -61,8 +62,8 @@ public class BeachDecorator implements ChunkDecorator {
             for (int groundLevel : surfacesFacet.getWorldColumn(position.x(), position.z())) {
                 if (groundLevel <= toLevel && groundLevel >= fromLevel) {
                     for (int y = fromLevel; y <= toLevel; y++) {
-                        if (blockFilter.apply(chunk.getBlock(ChunkMath.calcRelativeBlockPos(position, new Vector3i())))) {
-                            chunk.setBlock(ChunkMath.calcRelativeBlockPos(position, new Vector3i()), beachBlockProvider.provide(terrainVariationFacet.get(position.x(), position.y(), position.z())));
+                        if (blockFilter.apply(chunk.getBlock(Chunks.toRelative(position, new Vector3i())))) {
+                            chunk.setBlock(Chunks.toRelative(position, new Vector3i()), beachBlockProvider.provide(terrainVariationFacet.get(position.x(), position.y(), position.z())));
                         }
                     }
                 }

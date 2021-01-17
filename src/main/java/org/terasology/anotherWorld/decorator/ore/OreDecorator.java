@@ -24,6 +24,7 @@ import org.terasology.registry.CoreRegistry;
 import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockRegion;
 import org.terasology.world.chunks.ChunkConstants;
+import org.terasology.world.chunks.Chunks;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
 import org.terasology.world.generator.plugin.WorldGeneratorPluginLibrary;
@@ -53,7 +54,7 @@ public class OreDecorator implements ChunkDecorator {
         Structure.StructureCallback callback = new StructureCallbackImpl(chunk);
 
         for (StructureDefinition structureDefinition : oreDefinitions.values()) {
-            Collection<Structure> structures = structureDefinition.generateStructures(JomlUtil.from(ChunkConstants.CHUNK_SIZE), seed, chunkRegion.getRegion());
+            Collection<Structure> structures = structureDefinition.generateStructures(Chunks.CHUNK_SIZE, seed, chunkRegion.getRegion());
             for (Structure structure : structures) {
                 structure.generateStructure(callback);
             }
