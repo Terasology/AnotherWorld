@@ -31,7 +31,8 @@ public abstract class AbstractMultiChunkStructureDefinition implements Structure
         int chunksRangeToEvaluateY = (int) Math.ceil(maxRange / chunkSize.y());
         int chunksRangeToEvaluateZ = (int) Math.ceil(maxRange / chunkSize.z());
 
-        Vector3i minChunk = Chunks.toChunkPos(region.getMin(new Vector3i()), new Vector3i());
+ 		 Vector3i minRegion = region.getMin(new Vector3i();
+        Vector3i minChunk = Chunks.toChunkPos(minRegion, minRegion);
         Vector3i maxChunk = Chunks.toChunkPos(region.getMax(new Vector3i()), new Vector3i());
 
         for (int chunkX = minChunk.x - chunksRangeToEvaluateX; chunkX <= maxChunk.x + chunksRangeToEvaluateX; chunkX++) {
