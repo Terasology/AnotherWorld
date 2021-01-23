@@ -20,7 +20,7 @@ import org.terasology.anotherWorld.ChunkDecorator;
 import org.terasology.anotherWorld.generation.BiomeFacet;
 import org.terasology.biomesAPI.BiomeRegistry;
 import org.terasology.registry.CoreRegistry;
-import org.terasology.world.chunks.ChunkConstants;
+import org.terasology.world.chunks.Chunks;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
 
@@ -45,11 +45,11 @@ public class BiomeDecorator implements ChunkDecorator {
             throw new IllegalStateException("World generator does not provide a biome facet.");
         }
 
-        for (int x = 0; x < ChunkConstants.CHUNK_SIZE.x; x++) {
-            for (int z = 0; z < ChunkConstants.CHUNK_SIZE.z; z++) {
+        for (int x = 0; x < Chunks.CHUNK_SIZE.x(); x++) {
+            for (int z = 0; z < Chunks.CHUNK_SIZE.z(); z++) {
                 // Biome is the same for each value of y and depends only on x and z
                 AnotherWorldBiome biome = biomeFacet.get(x, z);
-                for (int y = 0; y < ChunkConstants.CHUNK_SIZE.y; y++) {
+                for (int y = 0; y < Chunks.CHUNK_SIZE.y(); y++) {
                     biomeRegistry.setBiome(biome, chunk, x, y, z);
                 }
             }
