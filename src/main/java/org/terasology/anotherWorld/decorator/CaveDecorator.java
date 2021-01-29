@@ -21,11 +21,10 @@ import org.terasology.anotherWorld.decorator.structure.Structure;
 import org.terasology.anotherWorld.decorator.structure.StructureDefinition;
 import org.terasology.anotherWorld.decorator.structure.VeinsStructureDefinition;
 import org.terasology.anotherWorld.util.PDist;
-import org.terasology.math.JomlUtil;
 import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.block.BlockRegion;
-import org.terasology.world.chunks.ChunkConstants;
+import org.terasology.world.chunks.Chunks;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
 
@@ -66,7 +65,7 @@ public class CaveDecorator implements ChunkDecorator {
     public void generateChunk(CoreChunk chunk, Region chunkRegion) {
         Structure.StructureCallback callback = new StructureCallbackImpl(chunk);
 
-        Collection<Structure> structures = caveDefinition.generateStructures(JomlUtil.from(ChunkConstants.CHUNK_SIZE), seed, chunkRegion.getRegion());
+        Collection<Structure> structures = caveDefinition.generateStructures(Chunks.CHUNK_SIZE, seed, chunkRegion.getRegion());
         for (Structure structure : structures) {
             structure.generateStructure(callback);
         }

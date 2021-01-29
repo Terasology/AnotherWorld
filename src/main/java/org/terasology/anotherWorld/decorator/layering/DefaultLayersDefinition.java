@@ -5,7 +5,6 @@ package org.terasology.anotherWorld.decorator.layering;
 import org.joml.Vector3i;
 import org.terasology.anotherWorld.util.ChunkRandom;
 import org.terasology.anotherWorld.util.PDist;
-import org.terasology.math.ChunkMath;
 import org.terasology.math.TeraMath;
 import org.terasology.naming.Name;
 import org.terasology.utilities.random.Random;

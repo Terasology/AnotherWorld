@@ -18,6 +18,7 @@ package org.terasology.anotherWorld.decorator.structure;
 import org.joml.RoundingMode;
 import org.joml.Vector3f;
 import org.joml.Vector3i;
+import org.joml.Vector3ic;
 import org.terasology.anotherWorld.util.PDist;
 import org.terasology.anotherWorld.util.Transform;
 import org.terasology.utilities.procedural.Noise3D;
@@ -68,16 +69,16 @@ public class PocketStructureDefinition extends AbstractMultiChunkStructureDefini
     }
 
     @Override
-    protected void generateStructuresForChunk(List<Structure> result, Random random, Vector3i chunkPosition, Vector3i chunkSize) {
+    protected void generateStructuresForChunk(List<Structure> result, Random random, Vector3ic chunkPosition, Vector3ic chunkSize) {
         // cloud X,Y,Z coordinates within chunk
-        float minY = Math.max(chunkPosition.y * chunkSize.y, pocketYLevel.getMin());
-        float maxY = Math.min((chunkPosition.y + 1) * chunkSize.y, pocketYLevel.getMax());
+        float minY = Math.max(chunkPosition.y() * chunkSize.y(), pocketYLevel.getMin());
+        float maxY = Math.min((chunkPosition.y() + 1) * chunkSize.y(), pocketYLevel.getMax());
         if (minY <= maxY) {
             // Y is in world coordinates, need to move it to coordinates of the chunk we generate it for
             float clY = random.nextFloat(minY, maxY);
 
-            float clX = chunkPosition.x * chunkSize.x + random.nextFloat() * chunkSize.x;
-            float clZ = chunkPosition.z * chunkSize.z + random.nextFloat() * chunkSize.z;
+            float clX = chunkPosition.x() * chunkSize.x() + random.nextFloat() * chunkSize.x();
+            float clZ = chunkPosition.z() * chunkSize.z() + random.nextFloat() * chunkSize.z();
 
             // cloud transformation matrix
             Transform clMat = new Transform();

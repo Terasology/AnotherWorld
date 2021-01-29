@@ -18,6 +18,7 @@ package org.terasology.anotherWorld.decorator.structure;
 import org.joml.RoundingMode;
 import org.joml.Vector3f;
 import org.joml.Vector3i;
+import org.joml.Vector3ic;
 import org.terasology.anotherWorld.util.PDist;
 import org.terasology.anotherWorld.util.Transform;
 import org.terasology.utilities.random.FastRandom;
@@ -85,16 +86,16 @@ public class VeinsStructureDefinition extends AbstractMultiChunkStructureDefinit
     }
 
     @Override
-    protected void generateStructuresForChunk(List<Structure> result, Random random, Vector3i chunkPosition, Vector3i chunkSize) {
+    protected void generateStructuresForChunk(List<Structure> result, Random random, Vector3ic chunkPosition, Vector3ic chunkSize) {
         // motherlode X,Y,Z coordinates within chunk
-        float minY = Math.max(chunkPosition.y * chunkSize.y, motherLodeYLevel.getMin());
-        float maxY = Math.min((chunkPosition.y + 1) * chunkSize.y, motherLodeYLevel.getMax());
+        float minY = Math.max(chunkPosition.y() * chunkSize.y(), motherLodeYLevel.getMin());
+        float maxY = Math.min((chunkPosition.y() + 1) * chunkSize.y(), motherLodeYLevel.getMax());
         if (minY <= maxY) {
             // Y is in world coordinates, need to move it to coordinates of the chunk we generate it for
             float mlY = random.nextFloat(minY, maxY);
 
-            float mlX = chunkPosition.x * chunkSize.x + random.nextFloat() * chunkSize.x;
-            float mlZ = chunkPosition.z * chunkSize.z + random.nextFloat() * chunkSize.z;
+            float mlX = chunkPosition.x() * chunkSize.x() + random.nextFloat() * chunkSize.x();
+            float mlZ = chunkPosition.z() * chunkSize.z() + random.nextFloat() * chunkSize.z();
 
             // motherlode transformation matrix
             Transform mlMat = new Transform();
@@ -500,8 +501,8 @@ public class VeinsStructureDefinition extends AbstractMultiChunkStructureDefinit
         private Vector3i chunkSize;
         private Random random;
 
-        public SolidSphereStructure(Transform transform, Vector3i chunkSize, Random random) {
-            this.chunkSize = chunkSize;
+        public SolidSphereStructure(Transform transform, Vector3ic chunkSize, Random random) {
+            this.chunkSize = new Vector3i(chunkSize);
             this.random = random;
             // build transformed bounding box from the local BB for a unit sphere
             float rMax = blockRadiusMultiplier.getMax();

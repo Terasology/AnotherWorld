@@ -3,12 +3,12 @@
 package org.terasology.anotherWorld.decorator.structure;
 
 import org.joml.Vector3i;
+import org.joml.Vector3ic;
 import org.terasology.anotherWorld.util.ChunkRandom;
 import org.terasology.anotherWorld.util.PDist;
-import org.terasology.math.ChunkMath;
-import org.terasology.math.JomlUtil;
 import org.terasology.utilities.random.Random;
-import org.terasology.world.block.BlockRegion;
+import org.terasology.world.block.BlockRegionc;
+import org.terasology.world.chunks.Chunks;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -22,16 +22,16 @@ public abstract class AbstractMultiChunkStructureDefinition implements Structure
     }
 
     @Override
-    public final Collection<Structure> generateStructures(Vector3i chunkSize, long seed, BlockRegion region) {
+    public final Collection<Structure> generateStructures(Vector3ic chunkSize, long seed, BlockRegionc region) {
         List<Structure> result = new LinkedList<>();
         float maxRange = getMaxRange();
 
-        int chunksRangeToEvaluateX = (int) Math.ceil(maxRange / chunkSize.x);
-        int chunksRangeToEvaluateY = (int) Math.ceil(maxRange / chunkSize.y);
-        int chunksRangeToEvaluateZ = (int) Math.ceil(maxRange / chunkSize.z);
+        int chunksRangeToEvaluateX = (int) Math.ceil(maxRange / chunkSize.x());
+        int chunksRangeToEvaluateY = (int) Math.ceil(maxRange / chunkSize.y());
+        int chunksRangeToEvaluateZ = (int) Math.ceil(maxRange / chunkSize.z());
 
-        Vector3i minChunk = ChunkMath.calcChunkPos(region.getMin(new Vector3i()), new Vector3i());
-        Vector3i maxChunk = ChunkMath.calcChunkPos(region.getMax(new Vector3i()), new Vector3i());
+        Vector3i minChunk = Chunks.toChunkPos(region.getMin(new Vector3i()));
+        Vector3i maxChunk = Chunks.toChunkPos(region.getMax(new Vector3i()));
 
         for (int chunkX = minChunk.x - chunksRangeToEvaluateX; chunkX <= maxChunk.x + chunksRangeToEvaluateX; chunkX++) {
             for (int chunkY = minChunk.y - chunksRangeToEvaluateY; chunkY <= maxChunk.y + chunksRangeToEvaluateY; chunkY++) {
@@ -45,7 +45,7 @@ public abstract class AbstractMultiChunkStructureDefinition implements Structure
         return result;
     }
 
-    protected final void generateStructuresForChunkWithFrequency(List<Structure> result, long seed, Vector3i chunkPosition, Vector3i chunkSize) {
+    protected final void generateStructuresForChunkWithFrequency(List<Structure> result, long seed, Vector3ic chunkPosition, Vector3ic chunkSize) {
         Random random = ChunkRandom.getChunkRandom(seed, chunkPosition, getGeneratorSalt());
 
         float structuresInChunk = frequency.getValue(random);
@@ -65,5 +65,5 @@ public abstract class AbstractMultiChunkStructureDefinition implements Structure
 
     protected abstract int getGeneratorSalt();
 
-    protected abstract void generateStructuresForChunk(List<Structure> result, Random random, Vector3i chunkPosition, Vector3i chunkSize);
+    protected abstract void generateStructuresForChunk(List<Structure> result, Random random, Vector3ic chunkPosition, Vector3ic chunkSize);
 }

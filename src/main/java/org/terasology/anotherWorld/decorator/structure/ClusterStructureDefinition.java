@@ -15,7 +15,7 @@
  */
 package org.terasology.anotherWorld.decorator.structure;
 
-import org.joml.Vector3i;
+import org.joml.Vector3ic;
 import org.terasology.anotherWorld.util.PDist;
 import org.terasology.utilities.random.Random;
 import org.terasology.world.block.Block;
@@ -50,17 +50,17 @@ public class ClusterStructureDefinition extends AbstractMultiChunkStructureDefin
     }
 
     @Override
-    protected void generateStructuresForChunk(List<Structure> result, Random random, Vector3i chunkPosition, Vector3i chunkSize) {
+    protected void generateStructuresForChunk(List<Structure> result, Random random, Vector3ic chunkPosition, Vector3ic chunkSize) {
         // cluster X,Y,Z coordinates within chunk
 
-        float minY = Math.max(chunkPosition.y * chunkSize.y, pocketYLevel.getMin());
-        float maxY = Math.min((chunkPosition.y + 1) * chunkSize.y, pocketYLevel.getMax());
+        float minY = Math.max(chunkPosition.y() * chunkSize.y(), pocketYLevel.getMin());
+        float maxY = Math.min((chunkPosition.y() + 1) * chunkSize.y(), pocketYLevel.getMax());
         if (minY <= maxY) {
             // Y is in world coordinates, need to move it to coordinates of the chunk we generate it for
             float clY = random.nextFloat(minY, maxY);
 
-            float clX = chunkPosition.x * chunkSize.x + random.nextFloat() * chunkSize.x;
-            float clZ = chunkPosition.z * chunkSize.z + random.nextFloat() * chunkSize.z;
+            float clX = chunkPosition.x() * chunkSize.x() + random.nextFloat() * chunkSize.x();
+            float clZ = chunkPosition.z() * chunkSize.z() + random.nextFloat() * chunkSize.z();
 
             result.add(new ClusterStructure(clX, clY, clZ, random));
         }
