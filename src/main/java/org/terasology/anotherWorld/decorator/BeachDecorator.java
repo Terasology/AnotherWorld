@@ -21,7 +21,6 @@ import org.joml.Vector3ic;
 import org.terasology.anotherWorld.ChunkDecorator;
 import org.terasology.anotherWorld.generation.TerrainVariationFacet;
 import org.terasology.anotherWorld.util.Provider;
-import org.terasology.math.ChunkMath;
 import org.terasology.world.block.Block;
 import org.terasology.world.chunks.Chunks;
 import org.terasology.world.chunks.CoreChunk;
