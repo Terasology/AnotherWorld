@@ -57,12 +57,15 @@ public class BeachDecorator implements ChunkDecorator {
     public void generateChunk(CoreChunk chunk, Region chunkRegion) {
         SurfacesFacet surfacesFacet = chunkRegion.getFacet(SurfacesFacet.class);
         TerrainVariationFacet terrainVariationFacet = chunkRegion.getFacet(TerrainVariationFacet.class);
+
+        Vector3i relativePos = new Vector3i();
         for (Vector3ic position : chunk.getRegion()) {
             for (int groundLevel : surfacesFacet.getWorldColumn(position.x(), position.z())) {
                 if (groundLevel <= toLevel && groundLevel >= fromLevel) {
                     for (int y = fromLevel; y <= toLevel; y++) {
-                        if (blockFilter.apply(chunk.getBlock(Chunks.toRelative(position, new Vector3i())))) {
-                            chunk.setBlock(Chunks.toRelative(position, new Vector3i()), beachBlockProvider.provide(terrainVariationFacet.get(position.x(), position.y(), position.z())));
+                        Chunks.toRelative(position, relativePos);
+                        if (blockFilter.apply(chunk.getBlock(relativePos))) {
+                            chunk.setBlock(relativePos, beachBlockProvider.provide(terrainVariationFacet.get(position.x(), position.y(), position.z())));
                         }
                     }
                 }
