@@ -7,7 +7,6 @@ import org.joml.Vector3ic;
 import org.terasology.anotherWorld.util.ChunkRandom;
 import org.terasology.anotherWorld.util.PDist;
 import org.terasology.utilities.random.Random;
-import org.terasology.world.block.BlockRegion;
 import org.terasology.world.block.BlockRegionc;
 import org.terasology.world.chunks.Chunks;
 
@@ -31,9 +30,8 @@ public abstract class AbstractMultiChunkStructureDefinition implements Structure
         int chunksRangeToEvaluateY = (int) Math.ceil(maxRange / chunkSize.y());
         int chunksRangeToEvaluateZ = (int) Math.ceil(maxRange / chunkSize.z());
 
- 		 Vector3i minRegion = region.getMin(new Vector3i();
-        Vector3i minChunk = Chunks.toChunkPos(minRegion, minRegion);
-        Vector3i maxChunk = Chunks.toChunkPos(region.getMax(new Vector3i()), new Vector3i());
+        Vector3i minChunk = Chunks.toChunkPos(region.getMin(new Vector3i()));
+        Vector3i maxChunk = Chunks.toChunkPos(region.getMax(new Vector3i()));
 
         for (int chunkX = minChunk.x - chunksRangeToEvaluateX; chunkX <= maxChunk.x + chunksRangeToEvaluateX; chunkX++) {
             for (int chunkY = minChunk.y - chunksRangeToEvaluateY; chunkY <= maxChunk.y + chunksRangeToEvaluateY; chunkY++) {
