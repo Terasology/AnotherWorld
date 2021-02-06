@@ -21,7 +21,7 @@ import org.terasology.anotherWorld.decorator.structure.Structure;
 import org.terasology.anotherWorld.decorator.structure.StructureDefinition;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.world.block.Block;
-import org.terasology.world.block.BlockRegion;
+import org.terasology.world.block.BlockRegionc;
 import org.terasology.world.chunks.Chunks;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
@@ -70,7 +70,7 @@ public class OreDecorator implements ChunkDecorator {
 
     private final class StructureCallbackImpl implements Structure.StructureCallback {
         private CoreChunk chunk;
-        private BlockRegion region;
+        private BlockRegionc region;
 
         private StructureCallbackImpl(CoreChunk chunk) {
             this.chunk = chunk;

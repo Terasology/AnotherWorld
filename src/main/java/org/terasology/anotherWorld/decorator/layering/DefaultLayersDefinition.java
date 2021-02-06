@@ -10,6 +10,7 @@ import org.terasology.naming.Name;
 import org.terasology.utilities.random.Random;
 import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockRegion;
+import org.terasology.world.block.BlockRegionc;
 import org.terasology.world.chunks.Chunks;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
@@ -44,7 +45,7 @@ public class DefaultLayersDefinition implements LayersDefinition {
         int groundLevel = TeraMath.floorToInt(region.getFacet(ElevationFacet.class).getWorld(x, z));
         boolean underSea = groundLevel < seaLevel;
 
-        BlockRegion chunkRegion = chunk.getRegion();
+        BlockRegionc chunkRegion = chunk.getRegion();
         if (underSea) {
             int seaBottom = Math.max(groundLevel + 1, chunkRegion.minY());
             int seaTop = Math.min(seaLevel, chunkRegion.maxY());
