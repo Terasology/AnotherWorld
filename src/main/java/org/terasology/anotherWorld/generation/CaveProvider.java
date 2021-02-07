@@ -1,18 +1,5 @@
-/*
- * Copyright 2014 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2021 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.anotherWorld.generation;
 
 import com.google.common.base.Predicate;
@@ -20,11 +7,10 @@ import org.terasology.anotherWorld.decorator.structure.Structure;
 import org.terasology.anotherWorld.decorator.structure.StructureDefinition;
 import org.terasology.anotherWorld.decorator.structure.VeinsStructureDefinition;
 import org.terasology.anotherWorld.util.PDist;
-import org.terasology.math.JomlUtil;
 import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.block.BlockRegion;
-import org.terasology.world.chunks.ChunkConstants;
+import org.terasology.world.chunks.Chunks;
 import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Produces;
@@ -68,7 +54,7 @@ public class CaveProvider implements FacetProvider {
 
         Structure.StructureCallback callback = new StructureCallbackImpl(caveFacet.getWorldRegion(), caveFacet);
 
-        Collection<Structure> structures = caveDefinition.generateStructures(JomlUtil.from(ChunkConstants.CHUNK_SIZE), seed, caveFacet.getWorldRegion());
+        Collection<Structure> structures = caveDefinition.generateStructures(Chunks.CHUNK_SIZE, seed, caveFacet.getWorldRegion());
         for (Structure structure : structures) {
             structure.generateStructure(callback);
         }
