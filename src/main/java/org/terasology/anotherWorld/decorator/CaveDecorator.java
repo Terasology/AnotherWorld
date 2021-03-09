@@ -21,13 +21,12 @@ import org.terasology.anotherWorld.decorator.structure.Structure;
 import org.terasology.anotherWorld.decorator.structure.StructureDefinition;
 import org.terasology.anotherWorld.decorator.structure.VeinsStructureDefinition;
 import org.terasology.anotherWorld.util.PDist;
-import org.terasology.world.block.Block;
-import org.terasology.world.block.BlockManager;
-import org.terasology.world.block.BlockRegion;
-import org.terasology.world.block.BlockRegionc;
-import org.terasology.world.chunks.Chunks;
-import org.terasology.world.chunks.CoreChunk;
-import org.terasology.world.generation.Region;
+import org.terasology.engine.world.block.Block;
+import org.terasology.engine.world.block.BlockManager;
+import org.terasology.engine.world.block.BlockRegionc;
+import org.terasology.engine.world.chunks.Chunks;
+import org.terasology.engine.world.chunks.CoreChunk;
+import org.terasology.engine.world.generation.Region;
 
 import java.util.Collection;
 

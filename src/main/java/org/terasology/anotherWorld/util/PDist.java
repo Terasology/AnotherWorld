@@ -15,7 +15,7 @@
  */
 package org.terasology.anotherWorld.util;
 
-import org.terasology.utilities.random.Random;
+import org.terasology.engine.utilities.random.Random;
 
 /**
  * Simple Probability Distribution

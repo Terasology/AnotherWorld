@@ -16,9 +16,9 @@
 package org.terasology.anotherWorld.generation;
 
 import org.terasology.climateConditions.ConditionsBaseField;
-import org.terasology.world.block.BlockRegion;
-import org.terasology.world.generation.Border3D;
-import org.terasology.world.generation.facets.base.BaseFacet3D;
+import org.terasology.engine.world.block.BlockRegion;
+import org.terasology.engine.world.generation.Border3D;
+import org.terasology.engine.world.generation.facets.base.BaseFacet3D;
 
 /**
  * Created by Marcin on 2014-10-20.

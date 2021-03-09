@@ -16,7 +16,7 @@
 package org.terasology.anotherWorld.decorator;
 
 import com.google.common.base.Predicate;
-import org.terasology.world.block.Block;
+import org.terasology.engine.world.block.Block;
 
 import java.util.Collection;
 import java.util.Collections;

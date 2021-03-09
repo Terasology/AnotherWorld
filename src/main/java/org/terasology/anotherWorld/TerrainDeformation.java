@@ -16,9 +16,9 @@
 package org.terasology.anotherWorld;
 
 import com.google.common.base.Function;
+import org.terasology.engine.utilities.procedural.Noise2D;
+import org.terasology.engine.utilities.procedural.SimplexNoise;
 import org.terasology.math.TeraMath;
-import org.terasology.utilities.procedural.Noise2D;
-import org.terasology.utilities.procedural.SimplexNoise;
 
 public class TerrainDeformation {
     private static final float MIN_MULTIPLIER = 0.0005f;

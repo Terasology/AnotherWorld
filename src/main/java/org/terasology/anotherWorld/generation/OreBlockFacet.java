@@ -16,10 +16,10 @@
 package org.terasology.anotherWorld.generation;
 
 import com.google.common.base.Predicate;
-import org.terasology.world.block.Block;
-import org.terasology.world.block.BlockRegion;
-import org.terasology.world.generation.Border3D;
-import org.terasology.world.generation.facets.base.BaseObjectFacet3D;
+import org.terasology.engine.world.block.Block;
+import org.terasology.engine.world.block.BlockRegion;
+import org.terasology.engine.world.generation.Border3D;
+import org.terasology.engine.world.generation.facets.base.BaseObjectFacet3D;
 
 public class OreBlockFacet extends BaseObjectFacet3D<Block> {
     private Predicate<Block> replacePredicate;

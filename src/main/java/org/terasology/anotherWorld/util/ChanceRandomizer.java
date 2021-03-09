@@ -15,8 +15,8 @@
  */
 package org.terasology.anotherWorld.util;
 
+import org.terasology.engine.utilities.random.Random;
 import org.terasology.math.TeraMath;
-import org.terasology.utilities.random.Random;
 
 import java.util.Deque;
 import java.util.LinkedList;

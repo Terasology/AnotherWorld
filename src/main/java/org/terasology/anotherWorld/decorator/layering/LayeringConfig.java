@@ -15,7 +15,7 @@
  */
 package org.terasology.anotherWorld.decorator.layering;
 
-import org.terasology.world.block.Block;
+import org.terasology.engine.world.block.Block;
 
 public class LayeringConfig {
     private Block bottomBlock;

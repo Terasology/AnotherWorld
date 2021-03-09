@@ -21,11 +21,11 @@ import org.joml.Vector3ic;
 import org.terasology.anotherWorld.ChunkDecorator;
 import org.terasology.anotherWorld.generation.TerrainVariationFacet;
 import org.terasology.anotherWorld.util.Provider;
-import org.terasology.world.block.Block;
-import org.terasology.world.chunks.Chunks;
-import org.terasology.world.chunks.CoreChunk;
-import org.terasology.world.generation.Region;
-import org.terasology.world.generation.facets.SurfacesFacet;
+import org.terasology.engine.world.block.Block;
+import org.terasology.engine.world.chunks.Chunks;
+import org.terasology.engine.world.chunks.CoreChunk;
+import org.terasology.engine.world.generation.Region;
+import org.terasology.engine.world.generation.facets.SurfacesFacet;
 
 public class BeachDecorator implements ChunkDecorator {
     private Predicate<Block> blockFilter;

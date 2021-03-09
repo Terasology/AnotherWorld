@@ -16,7 +16,7 @@
 package org.terasology.anotherWorld.decorator.ore;
 
 import org.terasology.anotherWorld.decorator.structure.StructureDefinition;
-import org.terasology.world.generator.plugin.WorldGeneratorPlugin;
+import org.terasology.engine.world.generator.plugin.WorldGeneratorPlugin;
 
 public interface OreDefinition extends StructureDefinition, WorldGeneratorPlugin {
     String getOreId();

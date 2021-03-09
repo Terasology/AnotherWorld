@@ -15,12 +15,12 @@
  */
 package org.terasology.anotherWorld.generation;
 
-import org.terasology.world.generation.Facet;
-import org.terasology.world.generation.FacetProvider;
-import org.terasology.world.generation.GeneratingRegion;
-import org.terasology.world.generation.Produces;
-import org.terasology.world.generation.Requires;
-import org.terasology.world.generation.facets.SurfacesFacet;
+import org.terasology.engine.world.generation.Facet;
+import org.terasology.engine.world.generation.FacetProvider;
+import org.terasology.engine.world.generation.GeneratingRegion;
+import org.terasology.engine.world.generation.Produces;
+import org.terasology.engine.world.generation.Requires;
+import org.terasology.engine.world.generation.facets.SurfacesFacet;
 
 @Produces(SurfaceBlockFacet.class)
 @Requires({@Facet(BlockLayersFacet.class), @Facet(SurfacesFacet.class),

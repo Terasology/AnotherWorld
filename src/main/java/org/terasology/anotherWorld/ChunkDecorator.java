@@ -15,7 +15,7 @@
  */
 package org.terasology.anotherWorld;
 
-import org.terasology.world.generation.WorldRasterizer;
+import org.terasology.engine.world.generation.WorldRasterizer;
 
 public interface ChunkDecorator extends WorldRasterizer {
 }

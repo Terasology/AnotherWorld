@@ -15,11 +15,11 @@
  */
 package org.terasology.anotherWorld.generation;
 
-import org.terasology.utilities.procedural.Noise3D;
-import org.terasology.utilities.procedural.SimplexNoise;
-import org.terasology.world.generation.FacetProvider;
-import org.terasology.world.generation.GeneratingRegion;
-import org.terasology.world.generation.Produces;
+import org.terasology.engine.utilities.procedural.Noise3D;
+import org.terasology.engine.utilities.procedural.SimplexNoise;
+import org.terasology.engine.world.generation.FacetProvider;
+import org.terasology.engine.world.generation.GeneratingRegion;
+import org.terasology.engine.world.generation.Produces;
 
 @Produces(TerrainVariationFacet.class)
 public class TerrainVariationProvider implements FacetProvider {

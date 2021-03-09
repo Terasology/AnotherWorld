@@ -19,13 +19,12 @@ import org.terasology.anotherWorld.AnotherWorldBiome;
 import org.terasology.anotherWorld.ChunkDecorator;
 import org.terasology.anotherWorld.generation.BiomeFacet;
 import org.terasology.biomesAPI.BiomeRegistry;
+import org.terasology.engine.registry.CoreRegistry;
+import org.terasology.engine.world.block.BlockRegionc;
+import org.terasology.engine.world.chunks.CoreChunk;
+import org.terasology.engine.world.generation.Region;
+import org.terasology.engine.world.generator.plugin.WorldGeneratorPluginLibrary;
 import org.terasology.naming.Name;
-import org.terasology.registry.CoreRegistry;
-import org.terasology.world.block.BlockRegion;
-import org.terasology.world.block.BlockRegionc;
-import org.terasology.world.chunks.CoreChunk;
-import org.terasology.world.generation.Region;
-import org.terasology.world.generator.plugin.WorldGeneratorPluginLibrary;
 
 import java.util.HashMap;
 import java.util.List;

@@ -16,7 +16,7 @@
 package org.terasology.anotherWorld.decorator.structure.provider;
 
 import org.terasology.anotherWorld.decorator.structure.PocketStructureDefinition;
-import org.terasology.world.block.Block;
+import org.terasology.engine.world.block.Block;
 
 public class UniformPocketBlockProvider implements PocketStructureDefinition.PocketBlockProvider {
     private Block block;

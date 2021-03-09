@@ -5,7 +5,7 @@ package org.terasology.anotherWorld;
 import org.joml.Vector3i;
 import org.terasology.anotherWorld.generation.HumidityFacet;
 import org.terasology.anotherWorld.generation.TemperatureFacet;
-import org.terasology.world.generation.Region;
+import org.terasology.engine.world.generation.Region;
 
 public class GenerationLocalParameters implements LocalParameters {
     private Vector3i location;

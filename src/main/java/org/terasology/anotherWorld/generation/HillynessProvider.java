@@ -15,16 +15,16 @@
  */
 package org.terasology.anotherWorld.generation;
 
+import org.terasology.engine.world.block.BlockRegion;
+import org.terasology.engine.world.generation.Border3D;
+import org.terasology.engine.world.generation.Facet;
+import org.terasology.engine.world.generation.FacetBorder;
+import org.terasology.engine.world.generation.FacetProvider;
+import org.terasology.engine.world.generation.GeneratingRegion;
+import org.terasology.engine.world.generation.Produces;
+import org.terasology.engine.world.generation.Requires;
+import org.terasology.engine.world.generation.facets.ElevationFacet;
 import org.terasology.math.TeraMath;
-import org.terasology.world.block.BlockRegion;
-import org.terasology.world.generation.Border3D;
-import org.terasology.world.generation.Facet;
-import org.terasology.world.generation.FacetBorder;
-import org.terasology.world.generation.FacetProvider;
-import org.terasology.world.generation.GeneratingRegion;
-import org.terasology.world.generation.Produces;
-import org.terasology.world.generation.Requires;
-import org.terasology.world.generation.facets.ElevationFacet;
 
 @Produces(HillynessFacet.class)
 @Requires(@Facet(value = ElevationFacet.class, border = @FacetBorder(sides = HillynessProvider.RANGE)))

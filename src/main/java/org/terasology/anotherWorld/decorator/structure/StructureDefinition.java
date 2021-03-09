@@ -16,7 +16,7 @@
 package org.terasology.anotherWorld.decorator.structure;
 
 import org.joml.Vector3ic;
-import org.terasology.world.block.BlockRegionc;
+import org.terasology.engine.world.block.BlockRegionc;
 
 import java.util.Collection;
 

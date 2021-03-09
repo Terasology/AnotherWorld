@@ -3,8 +3,8 @@
 package org.terasology.anotherWorld.util;
 
 import org.joml.Vector3ic;
-import org.terasology.utilities.random.FastRandom;
-import org.terasology.utilities.random.Random;
+import org.terasology.engine.utilities.random.FastRandom;
+import org.terasology.engine.utilities.random.Random;
 
 public abstract class ChunkRandom {
     public static Random getChunkRandom(long seed, Vector3ic location, int salt) {

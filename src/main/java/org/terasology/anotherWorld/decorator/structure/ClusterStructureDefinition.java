@@ -17,8 +17,8 @@ package org.terasology.anotherWorld.decorator.structure;
 
 import org.joml.Vector3ic;
 import org.terasology.anotherWorld.util.PDist;
-import org.terasology.utilities.random.Random;
-import org.terasology.world.block.Block;
+import org.terasology.engine.utilities.random.Random;
+import org.terasology.engine.world.block.Block;
 
 import java.util.List;
 

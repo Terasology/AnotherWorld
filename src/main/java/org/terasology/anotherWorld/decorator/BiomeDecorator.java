@@ -19,10 +19,10 @@ import org.terasology.anotherWorld.AnotherWorldBiome;
 import org.terasology.anotherWorld.ChunkDecorator;
 import org.terasology.anotherWorld.generation.BiomeFacet;
 import org.terasology.biomesAPI.BiomeRegistry;
-import org.terasology.registry.CoreRegistry;
-import org.terasology.world.chunks.Chunks;
-import org.terasology.world.chunks.CoreChunk;
-import org.terasology.world.generation.Region;
+import org.terasology.engine.registry.CoreRegistry;
+import org.terasology.engine.world.chunks.Chunks;
+import org.terasology.engine.world.chunks.CoreChunk;
+import org.terasology.engine.world.generation.Region;
 
 /**
  * Rasterizes the Biome Facet into the Chunk.

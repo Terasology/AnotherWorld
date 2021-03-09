@@ -16,9 +16,9 @@
 package org.terasology.anotherWorld.generation;
 
 import org.terasology.anotherWorld.decorator.layering.LayerDefinition;
-import org.terasology.world.block.BlockRegion;
-import org.terasology.world.generation.Border3D;
-import org.terasology.world.generation.facets.base.BaseObjectFacet2D;
+import org.terasology.engine.world.block.BlockRegion;
+import org.terasology.engine.world.generation.Border3D;
+import org.terasology.engine.world.generation.facets.base.BaseObjectFacet2D;
 
 import java.util.List;
 

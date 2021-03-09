@@ -21,9 +21,9 @@ import org.joml.Vector3i;
 import org.joml.Vector3ic;
 import org.terasology.anotherWorld.util.PDist;
 import org.terasology.anotherWorld.util.Transform;
-import org.terasology.utilities.random.FastRandom;
-import org.terasology.utilities.random.Random;
-import org.terasology.world.block.Block;
+import org.terasology.engine.utilities.random.FastRandom;
+import org.terasology.engine.utilities.random.Random;
+import org.terasology.engine.world.block.Block;
 
 import java.util.List;
 

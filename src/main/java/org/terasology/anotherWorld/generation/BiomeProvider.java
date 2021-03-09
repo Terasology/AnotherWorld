@@ -18,14 +18,14 @@ package org.terasology.anotherWorld.generation;
 import org.joml.Vector2ic;
 import org.terasology.anotherWorld.AnotherWorldBiome;
 import org.terasology.biomesAPI.BiomeRegistry;
+import org.terasology.engine.registry.CoreRegistry;
+import org.terasology.engine.world.generation.Facet;
+import org.terasology.engine.world.generation.FacetProvider;
+import org.terasology.engine.world.generation.GeneratingRegion;
+import org.terasology.engine.world.generation.Produces;
+import org.terasology.engine.world.generation.Requires;
+import org.terasology.engine.world.generation.facets.ElevationFacet;
 import org.terasology.math.TeraMath;
-import org.terasology.registry.CoreRegistry;
-import org.terasology.world.generation.Facet;
-import org.terasology.world.generation.FacetProvider;
-import org.terasology.world.generation.GeneratingRegion;
-import org.terasology.world.generation.Produces;
-import org.terasology.world.generation.Requires;
-import org.terasology.world.generation.facets.ElevationFacet;
 
 
 @Produces(BiomeFacet.class)

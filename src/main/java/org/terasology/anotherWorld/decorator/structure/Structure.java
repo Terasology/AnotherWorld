@@ -15,7 +15,7 @@
  */
 package org.terasology.anotherWorld.decorator.structure;
 
-import org.terasology.world.block.Block;
+import org.terasology.engine.world.block.Block;
 
 public interface Structure {
     void generateStructure(StructureCallback callback);

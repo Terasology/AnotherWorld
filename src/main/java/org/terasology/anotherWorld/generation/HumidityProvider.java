@@ -16,10 +16,10 @@
 package org.terasology.anotherWorld.generation;
 
 import org.terasology.climateConditions.ConditionsBaseField;
-import org.terasology.world.generation.Border3D;
-import org.terasology.world.generation.FacetProvider;
-import org.terasology.world.generation.GeneratingRegion;
-import org.terasology.world.generation.Produces;
+import org.terasology.engine.world.generation.Border3D;
+import org.terasology.engine.world.generation.FacetProvider;
+import org.terasology.engine.world.generation.GeneratingRegion;
+import org.terasology.engine.world.generation.Produces;
 
 /**
  * Created by Marcin on 2014-10-20.

@@ -6,9 +6,9 @@ import org.joml.Vector3i;
 import org.joml.Vector3ic;
 import org.terasology.anotherWorld.util.ChunkRandom;
 import org.terasology.anotherWorld.util.PDist;
-import org.terasology.utilities.random.Random;
-import org.terasology.world.block.BlockRegionc;
-import org.terasology.world.chunks.Chunks;
+import org.terasology.engine.utilities.random.Random;
+import org.terasology.engine.world.block.BlockRegionc;
+import org.terasology.engine.world.chunks.Chunks;
 
 import java.util.Collection;
 import java.util.LinkedList;
