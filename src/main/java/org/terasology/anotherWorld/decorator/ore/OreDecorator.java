@@ -22,8 +22,8 @@ import org.terasology.anotherWorld.decorator.structure.StructureDefinition;
 import org.terasology.engine.registry.CoreRegistry;
 import org.terasology.engine.world.block.Block;
 import org.terasology.engine.world.block.BlockRegionc;
+import org.terasology.engine.world.chunks.Chunk;
 import org.terasology.engine.world.chunks.Chunks;
-import org.terasology.engine.world.chunks.CoreChunk;
 import org.terasology.engine.world.generation.Region;
 import org.terasology.engine.world.generator.plugin.WorldGeneratorPluginLibrary;
 
@@ -48,7 +48,7 @@ public class OreDecorator implements ChunkDecorator {
     }
 
     @Override
-    public void generateChunk(CoreChunk chunk, Region chunkRegion) {
+    public void generateChunk(Chunk chunk, Region chunkRegion) {
         Structure.StructureCallback callback = new StructureCallbackImpl(chunk);
 
         for (StructureDefinition structureDefinition : oreDefinitions.values()) {
@@ -69,10 +69,10 @@ public class OreDecorator implements ChunkDecorator {
     }
 
     private final class StructureCallbackImpl implements Structure.StructureCallback {
-        private CoreChunk chunk;
+        private Chunk chunk;
         private BlockRegionc region;
 
-        private StructureCallbackImpl(CoreChunk chunk) {
+        private StructureCallbackImpl(Chunk chunk) {
             this.chunk = chunk;
             this.region = chunk.getRegion();
         }

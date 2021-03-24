@@ -20,8 +20,8 @@ import org.terasology.anotherWorld.ChunkDecorator;
 import org.terasology.anotherWorld.generation.BiomeFacet;
 import org.terasology.biomesAPI.BiomeRegistry;
 import org.terasology.engine.registry.CoreRegistry;
+import org.terasology.engine.world.chunks.Chunk;
 import org.terasology.engine.world.chunks.Chunks;
-import org.terasology.engine.world.chunks.CoreChunk;
 import org.terasology.engine.world.generation.Region;
 
 /**
@@ -37,7 +37,7 @@ public class BiomeDecorator implements ChunkDecorator {
     }
 
     @Override
-    public void generateChunk(CoreChunk chunk, Region chunkRegion) {
+    public void generateChunk(Chunk chunk, Region chunkRegion) {
 
         BiomeFacet biomeFacet = chunkRegion.getFacet(BiomeFacet.class);
 
