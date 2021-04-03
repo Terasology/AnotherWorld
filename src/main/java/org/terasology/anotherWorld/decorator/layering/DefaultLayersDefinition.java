@@ -13,7 +13,7 @@ import org.terasology.engine.world.chunks.Chunks;
 import org.terasology.engine.world.generation.Region;
 import org.terasology.engine.world.generation.facets.ElevationFacet;
 import org.terasology.math.TeraMath;
-import org.terasology.naming.Name;
+import org.terasology.gestalt.naming.Name;
 
 import java.util.LinkedList;
 import java.util.List;

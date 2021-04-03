@@ -24,7 +24,7 @@ import org.terasology.engine.world.block.BlockRegionc;
 import org.terasology.engine.world.chunks.Chunk;
 import org.terasology.engine.world.generation.Region;
 import org.terasology.engine.world.generator.plugin.WorldGeneratorPluginLibrary;
-import org.terasology.naming.Name;
+import org.terasology.gestalt.naming.Name;
 
 import java.util.HashMap;
 import java.util.List;
