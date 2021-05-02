@@ -15,7 +15,7 @@
  */
 package org.terasology.anotherWorld;
 
-import org.terasology.naming.Name;
+import org.terasology.gestalt.naming.Name;
 
 /**
  * Standard implementation class for basic another world biomes.

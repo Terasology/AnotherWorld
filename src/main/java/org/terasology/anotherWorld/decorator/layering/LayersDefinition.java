@@ -18,7 +18,7 @@ package org.terasology.anotherWorld.decorator.layering;
 import org.terasology.engine.world.chunks.Chunk;
 import org.terasology.engine.world.generation.Region;
 import org.terasology.engine.world.generator.plugin.WorldGeneratorPlugin;
-import org.terasology.naming.Name;
+import org.terasology.gestalt.naming.Name;
 
 public interface LayersDefinition extends WorldGeneratorPlugin {
     Name getBiomeId();
