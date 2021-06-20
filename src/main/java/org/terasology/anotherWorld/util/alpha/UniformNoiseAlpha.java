@@ -129,6 +129,7 @@ public class UniformNoiseAlpha implements Function<Float, Float> {
 
     @Override
     public Float apply(Float input) {
+
         return UNIFORM_NOISE_LOOKUP[(int) (TeraMath.clamp(delegate.apply(input)) * UNIFORM_NOISE_LOOKUP.length)];
     }
 

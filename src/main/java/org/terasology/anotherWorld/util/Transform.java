@@ -1,18 +1,5 @@
-/*
- * Copyright 2014 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2021 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.anotherWorld.util;
 
 /**
@@ -126,7 +113,7 @@ public class Transform {
         float x = vector[0]*mat[0] + vector[1]*mat[4] + vector[2]*mat[8]  + vw*mat[12];
         float y = vector[0]*mat[1] + vector[1]*mat[5] + vector[2]*mat[9]  + vw*mat[13];
         float z = vector[0]*mat[2] + vector[1]*mat[6] + vector[2]*mat[10] + vw*mat[14];
-        float w = vector[0]*mat[3] + vector[1]*mat[7] + vector[2]*mat[11] + vw*mat[15];        
+        float w = vector[0]*mat[3] + vector[1]*mat[7] + vector[2]*mat[11] + vw*mat[15];
         */
         // place results in original vector
         vector[0] = x;
