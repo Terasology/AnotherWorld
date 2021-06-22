@@ -19,8 +19,8 @@ import com.google.common.base.Function;
 import org.joml.Vector2ic;
 import org.terasology.anotherWorld.TerrainDeformation;
 import org.terasology.anotherWorld.util.alpha.IdentityAlphaFunction;
-import org.terasology.engine.utilities.procedural.BrownianNoise2D;
-import org.terasology.engine.utilities.procedural.Noise2D;
+import org.terasology.engine.utilities.procedural.BrownianNoise;
+import org.terasology.engine.utilities.procedural.Noise;
 import org.terasology.engine.utilities.procedural.SimplexNoise;
 import org.terasology.engine.world.generation.Border3D;
 import org.terasology.engine.world.generation.FacetProvider;
@@ -34,7 +34,7 @@ public class PerlinSurfaceHeightProvider implements FacetProvider {
     private static final float MIN_MULTIPLIER = 0.00005f;
     private static final float MAX_MULTIPLIER = 0.001f;
 
-    private Noise2D noise;
+    private Noise noise;
     private double noiseScale;
 
     private float seaFrequency;
@@ -77,7 +77,7 @@ public class PerlinSurfaceHeightProvider implements FacetProvider {
 
     @Override
     public void setSeed(long seed) {
-        BrownianNoise2D brownianNoise = new BrownianNoise2D(new SimplexNoise(seed), 6);
+        BrownianNoise brownianNoise = new BrownianNoise(new SimplexNoise(seed), 6);
         noise = brownianNoise;
         noiseScale = brownianNoise.getScale();
         terrainDeformation = new TerrainDeformation(seed, hillynessDiversity, hillynessFunction);
@@ -96,7 +96,7 @@ public class PerlinSurfaceHeightProvider implements FacetProvider {
                 int zScan = (int) Math.sqrt(scanArea * scanArea - (x - worldX) * (x - worldX));
                 for (int z = worldZ - zScan; z <= worldZ + zScan; z++) {
                     if (z % sampleReduction == 0) {
-                        noiseValue += noise.noise(terrainNoiseMultiplier * x, terrainNoiseMultiplier * z) / noiseScale;
+                        noiseValue += noise.noise(terrainNoiseMultiplier * x, terrainNoiseMultiplier * z) * noiseScale;
                         divider++;
                     }
                 }

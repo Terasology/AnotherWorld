@@ -39,7 +39,7 @@ public class DefaultLayersDefinition implements LayersDefinition {
 
     @Override
     public void generateInChunk(long seed, Chunk chunk, Region region, int x, int z, LayeringConfig layeringConfig) {
-        Random random = ChunkRandom.getChunkRandom(seed, chunk.getPosition(new Vector3i()), 349 * (31 * x + z));
+        Random random = ChunkRandom.getChunkRandom(seed, chunk.getPosition(), 349 * (31 * x + z));
         // The ElevationFacet isn't really appropriate here, but the algorithm isn't very compatible with using the DensityFacet instead.
         int groundLevel = TeraMath.floorToInt(region.getFacet(ElevationFacet.class).getWorld(x, z));
         boolean underSea = groundLevel < seaLevel;
@@ -75,11 +75,9 @@ public class DefaultLayersDefinition implements LayersDefinition {
 
         for (int i = level; i > 0; i--) {
             if (chunkRegion.contains(x, i, z)) {
-
                 chunk.setBlock(Chunks.toRelative(x, i, z, new Vector3i()), layeringConfig.getMainBlock());
             }
         }
-
 
         if (chunkRegion.contains(x, 0, z)) {
             chunk.setBlock(Chunks.toRelative(x, 0, z, new Vector3i()), layeringConfig.getBottomBlock());

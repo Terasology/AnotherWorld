@@ -21,6 +21,7 @@ import org.joml.Vector3i;
 import org.joml.Vector3ic;
 import org.terasology.anotherWorld.util.PDist;
 import org.terasology.anotherWorld.util.Transform;
+import org.terasology.engine.utilities.procedural.Noise;
 import org.terasology.engine.utilities.procedural.Noise3D;
 import org.terasology.engine.utilities.procedural.SimplexNoise;
 import org.terasology.engine.utilities.random.Random;
@@ -105,7 +106,7 @@ public class PocketStructureDefinition extends AbstractMultiChunkStructureDefini
         protected final Transform mat;
         protected final Transform invMat;
         // noise generator
-        protected final Noise3D noiseGen;
+        protected final Noise noiseGen;
         protected final float sizeNoiseMagnitude;
         protected final int noiseLevels;
         private Vector3i minPosition;

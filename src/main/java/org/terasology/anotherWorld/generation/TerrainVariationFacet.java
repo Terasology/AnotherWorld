@@ -17,16 +17,16 @@ package org.terasology.anotherWorld.generation;
 
 import org.terasology.anotherWorld.util.alpha.IdentityAlphaFunction;
 import org.terasology.anotherWorld.util.alpha.UniformNoiseAlpha;
-import org.terasology.engine.utilities.procedural.Noise3D;
+import org.terasology.engine.utilities.procedural.Noise;
 import org.terasology.engine.world.block.BlockRegion;
 import org.terasology.engine.world.generation.Border3D;
 import org.terasology.engine.world.generation.facets.base.BaseFacet3D;
 
 public class TerrainVariationFacet extends BaseFacet3D {
     private UniformNoiseAlpha alpha = new UniformNoiseAlpha(IdentityAlphaFunction.singleton());
-    private Noise3D noise;
+    private Noise noise;
 
-    public TerrainVariationFacet(BlockRegion targetRegion, Border3D border, Noise3D noise) {
+    public TerrainVariationFacet(BlockRegion targetRegion, Border3D border, Noise noise) {
         super(targetRegion, border);
         this.noise = noise;
     }
